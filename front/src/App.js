@@ -1,8 +1,13 @@
 // src/App.js
 
 import React from "react";
+ import Map from './Map';
 import "./App.css";
-import Map from './Map';
+import TextField from "./TextField";
+import FilterButtons from "./FilterButtons";
+import ReFilterButtons from "./ReFilterButtons";
+import NumFilterButtons from "./NumFilterButtons";
+import LanSelection from "./LanSelection";
 
 function App() {
   // const handleClick = () => {
@@ -14,27 +19,62 @@ function App() {
     <header className="header">
       <div className="app-header-left-content">
         <h1>서울을 찾아서</h1>
-        <h5>숨겨진 서울의 모습 찾아서, AI 기반 관광 추천 서비스</h5>
+        <h4>숨겨진 서울의 모습 찾아서, AI 기반 관광 추천 서비스</h4>
       </div>
       <div className="app-header-right-content">
-        <button className="lang-button">한국어</button>
-        <button className="lang-button">English</button>
-        <button className="lang-button">中國語</button>
+       <LanSelection/>
       </div>
     </header>
 
     <body className="body-content">
       <div className="block">
+        <div className="weather_container">
+          <div className="container_row_left">
+            <h2>현재 위치</h2> 
+            <h5>현재 위치 혹은 원하는 위치를 기반으로 서비스를 제공합니다.</h5>
+          </div>
+          
 
-        <h2>현재 위치</h2>
-        <h5>현재 위치 혹은 원하는 위치를 기반으로 서비스를 제공합니다.</h5>
-        <button className="location_button">🥳 관광거리</button>
+          <div className="location_button">
+
+            <button className="button_none"  >
+              <img src="/png/search.png" alt="search" /> 
+            </button>
+
+            <TextField/>
+          </div>
+        </div>
+       
 
       </div>
       <div className="item-container">
         <div className="double-item">
           <div className="block_weather">
             <h2>오늘의 관광날씨는?</h2>
+            <div className="weather_container">
+              <div className="weather"> 16°C</div>
+              <div className="weather_sub"> 강수확률: 10% <br/>습도: 66% <br/>풍속: 1m/s <br/> </div>
+              <img src="/png/weather/sun.png" alt="sun" /> 
+            </div>
+            
+            <h5>관광 시 추천하는 준비물</h5>
+            <div className="weather_container">
+              <div className="icon_container">
+                <div className="weather_icon">
+                  <img src="/png/mask.png" alt="mask" /> 
+                </div>
+                <div className="icon_title"> 마스크</div>
+
+              </div>
+              <div className="icon_container">
+                <div className="weather_icon">
+                  <img src="/png/umbrella.png" alt="umbrella" /> 
+                </div>
+                <div className="icon_title"> 우산</div>
+
+              </div>
+            </div>
+          
           </div>
           <div className="block_top">
           <h2>서울의 핫플 Top5</h2>
@@ -44,16 +84,8 @@ function App() {
       
         <div className="block2">
           <h2>주변 관광지 찾아보기</h2>
-          필터
-          <div className="filters">
-            <button className="filter_button">🥳 관광거리</button>
-            <button className="filter_button">🗽 명소</button>
-            <button className="filter_button">🇰🇷 문화</button>
-            <button className="filter_button">🛍️ 쇼핑</button>
-            <button className="filter_button">🍀 자연</button>
-            <button className="filter_button">🍱 음식</button>
-            <button className="filter_button">외국인</button>
-          </div>
+          필터 (복수 선택 가능)
+          <ReFilterButtons/>  
           < Map/>
         </div>
       </div>
@@ -61,28 +93,9 @@ function App() {
       <div className="block">
       <h2>관광 코스 추천 받기</h2>
       장소의 갯수를 선택해주세요
-          <div className="filters">
-            <button className="filter_button">1</button>
-            <button className="filter_button">2</button>
-            <button className="filter_button">3</button>
-            <button className="filter_button">4</button>
-            <button className="filter_button">5</button>
-            <button className="filter_button">6</button>
-            <button className="filter_button">7</button>
-            <button className="filter_button">8</button>
-            <button className="filter_button">9</button>
-            <button className="filter_button">10개 이상</button>
-          </div>
+      <NumFilterButtons/>
       원하는 분류를 선택해주세요 (복수선택 가능)
-      <div className="filters">
-        <button className="filter_button">🥳 관광거리</button>
-        <button className="filter_button">🗽 명소</button>
-        <button className="filter_button">🇰🇷 문화</button>
-        <button className="filter_button">🛍️ 쇼핑</button>
-        <button className="filter_button">🍀 자연</button>
-        <button className="filter_button">🍱 음식</button>
-        <button className="filter_button">외국인</button>
-      </div >
+      <FilterButtons/>
       <div style={{ textAlign: "center" }}>
         <button className="recommand_button"> 추천 받기</button>
       </div>

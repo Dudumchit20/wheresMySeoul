@@ -38,6 +38,8 @@ h2{
   color: #DD0050;
   font-weight: 600;
   font-size: 20px;
+  margin-right: 15px;
+  margin-bottom: 20px;
 
 }
 h4{
@@ -45,9 +47,10 @@ h4{
   margin-bottom: 5px;
 }
 h5{
+  margin: 10px 0px;
   font-size: 15px;
-  margin-bottom: 5px;
-color: #C5C5C5;
+  color: #C5C5C5;
+  font-weight: 400;
 }
 .lang-button {
 
@@ -61,7 +64,7 @@ color: #C5C5C5;
   background-color: #ffffff;
   color: #33363F;
   border-radius: 31px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
   margin-bottom: 0px;
 
 }
@@ -87,6 +90,8 @@ color: #C5C5C5;
   text-align: left;
   margin-bottom: 15px;
   padding: 20px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+
 }
 .block_weather{
   flex: 1;
@@ -95,6 +100,8 @@ color: #C5C5C5;
   text-align: left;
   margin-bottom: 15px;
   padding: 20px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+
 }
 .block_top{
   flex: 1;
@@ -109,6 +116,8 @@ color: #C5C5C5;
   border-radius: 23px;
   text-align: left;
   padding: 20px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+
 }
 .double-item {
   display: flex;
@@ -141,7 +150,42 @@ color: #C5C5C5;
   margin-bottom: 0px;
 }
 
+
+.recommand_button{
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #DD0050;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 15px 90px;
+
+
+}
+footer {
+  margin-top: 80px;
+  font-weight: 200;
+  height: 80px;
+  padding-left: 60px;
+  background-color: #acabab85;
+  color: #fff;
+  display: flex; /* Flexbox를 활성화 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+
+  /* position: fixed; */
+  bottom: 0; /* 아래에 붙임 */
+  width: 100%; /* 가로 폭을 꽉 채움 */
+
+  
+}
+
+/* 현재 위치 검색 버튼 */
 .location_button{
+  flex:1;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 세로 중앙 정렬 */
+  
   /* width: 68px; */
   height: 40px;
   padding :7px 14px;
@@ -155,30 +199,77 @@ color: #C5C5C5;
   color: #919191;
   border-radius: 31px;
   margin-bottom: 0px;
+  margin-left: 45px;
 }
-.recommand_button{
-  font-size: 20px;
-  font-weight: 500;
-  background-color: #DA4661;
-  color: #ffffff;
-  border-radius: 10px;
-  border: none;
-  padding: 15px 90px;
 
-
-}
-footer {
-  font-weight: 200;
-  height: 80px;
-  padding-left: 60px;
-  background-color: #DD0050;
-  color: #fff;
-  display: flex; /* Flexbox를 활성화 */
-  align-items: center; /* 세로 방향 중앙 정렬 */
-
-  /* position: fixed; */
-  bottom: 0; /* 아래에 붙임 */
-  width: 100%; /* 가로 폭을 꽉 채움 */
-
+.button_none{
   
+  height: 40px;
+  width: 40px;
+  background-color: rgba(255, 0, 0, 0.0); 
+  /* 빨간색의 반투명 배경색 */
+  border: none;
+}
+.button_none img {
+  max-width: 100%; /* 이미지 최대 너비 */
+  max-height: 100%; /* 이미지 최대 높이 */
+}
+/* 날씨 ----------------------------------------*/
+.weather_container{
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* 세로 중앙 정렬 */
+
+
+}
+.container_column_left{
+  display: flex;
+  flex-direction: column;
+  /* align-items:self-start; 세로 중앙 정렬 */
+
+
+}
+.weather{
+  color: #000;
+  font-size: 38px;
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.weather_sub{
+  color: #949494;
+  font-size: 12px;
+  font-weight:500;
+  margin-right:auto;
+}
+.weather_subtitle{
+  font-size: 16px;
+  color: #5D5D5D ;
+}
+.icon_container{
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* 세로 중앙 정렬 */
+}
+.weather_icon{
+  width: 52px;
+  height: 52px;
+  background-color: #F8F8F8; 
+  
+  /* 배경색을 원 모양으로 표시 */
+  border-radius: 50%; /* 반지름을 50%로 설정하여 원 모양으로 만듭니다 */
+  display: inline-flex; /* 이미지와 원을 가로로 정렬하기 위해 inline-flex 사용 */
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+
+  margin: 5px;
+
+}
+.weather_icon img {
+  max-width: 70%; /* 이미지 최대 너비 */
+  max-height: 70%; /* 이미지 최대 높이 */
+}
+.icon_title{
+  color: #8D8D8D;
+  font-size: 11px;
 }
