@@ -1,0 +1,58 @@
+/* src/App.css */
+
+.app {
+  text-align: center;
+  font-family: 'Apple SD Gothic Neo', Arial, sans-serif;
+  letter-spacing: -0.24px;
+}
+.lang-button {
+
+  /* width: 68px; */
+  height: 38px;
+  padding: 10px 20px;
+  margin: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #33363F;
+  border-radius: 31px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.app-header {
+ 
+
+}
+
+
+
+.app-header-left-content, .app-header-right-content {
+  display: flex;
+  flex-direction: row;  /* 내용을 세로 방향으로 쌓음 */
+}
+
+.app-header-left-content {
+  align-items: flex-start; /* 왼쪽 컨텐츠를 왼쪽 정렬 */
+}
+
+.app-header-right-content {
+  align-items: flex-end;   /* 오른쪽 컨텐츠를 오른쪽 정렬 */
+}
+
+h1 {
+  color: #DD0050;
+}
+
+.lang-button {
+  height: 38px;
+  padding: 10px 20px;
+  margin: 12px;
+  font-size: 15px;
+  cursor: pointer;
+  border: none;
+  background-color: #ffffff;
+  color: #33363F;
+  border-radius: 31px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
