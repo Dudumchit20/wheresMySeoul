@@ -1,9 +1,53 @@
 /* src/App.css */
 
-.app {
-  text-align: center;
-  font-family: 'Apple SD Gothic Neo', Arial, sans-serif;
-  letter-spacing: -0.24px;
+.app_container{
+  height: auto;
+  width: auto;
+  overflow-y: auto; /* 세로 스크롤이 필요할 때만 스크롤바가 표시됩니다. */
+
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F7F2F2; /* 예시 배경색 */
+  font-family: 'Apple SD Gothic Neo',Arial, sans-serif; /* 폰트 설정 */
+}
+.body-content{
+  height: 100%;
+  margin-top: 60px;
+  margin-right: 60px;
+  margin-left: 60px;
+  text-align: left;
+
+}
+header {
+  margin-right: 60px;
+  margin-left: 60px;
+  height: 100px;
+  display: flex;
+  flex-direction: row;  /* 내용을 세로 방향으로 쌓음 */
+  align-items: end;
+}
+
+h1{
+  color: #DD0050;
+  margin: 10px;
+  margin-bottom: 0px;
+}
+h2{
+  color: #DD0050;
+  font-weight: 600;
+  font-size: 20px;
+
+}
+h4{
+  font-weight: 400;
+  margin-bottom: 5px;
+}
+h5{
+  font-size: 15px;
+  margin-bottom: 5px;
+color: #C5C5C5;
 }
 .lang-button {
 
@@ -18,14 +62,9 @@
   color: #33363F;
   border-radius: 31px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.app-header {
- 
+  margin-bottom: 0px;
 
 }
-
-
 
 .app-header-left-content, .app-header-right-content {
   display: flex;
@@ -33,26 +72,113 @@
 }
 
 .app-header-left-content {
-  align-items: flex-start; /* 왼쪽 컨텐츠를 왼쪽 정렬 */
+  align-items: end; /* 왼쪽 컨텐츠를 왼쪽 정렬 */
+  
 }
 
 .app-header-right-content {
   align-items: flex-end;   /* 오른쪽 컨텐츠를 오른쪽 정렬 */
+  margin-left: auto; /* 왼쪽의 모든 여유 공간을 차지하여 오른쪽으로 밀어냅니다 */
 }
 
-h1 {
-  color: #DD0050;
+.block{
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  margin-bottom: 15px;
+  padding: 20px 30px;
 }
-
-.lang-button {
-  height: 38px;
-  padding: 10px 20px;
-  margin: 12px;
-  font-size: 15px;
+.block_weather{
+  flex: 1;
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  margin-bottom: 15px;
+  padding: 20px 30px;
+}
+.block_top{
+  flex: 1;
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  padding: 20px 30px;
+}
+.block2{
+  flex: 2; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  padding: 20px 30px;
+}
+.double-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-right: 15px;
+}
+.item-container{
+  position: relative;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: wrap;
+}
+.filters{
+  margin: 20px 0px;
+}
+.filter_button{
+  /* width: 68px; */
+  height: 40px;
+  padding :7px 14px;
+  font-size: 14px;
   cursor: pointer;
-  border: none;
+  border-color: #DCDCDC;
+  border-style:solid;
+  border-width: 1px;
+  margin-right: 10px;
   background-color: #ffffff;
-  color: #33363F;
+  color: #919191;
   border-radius: 31px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0px;
+}
+
+.location_button{
+  /* width: 68px; */
+  height: 40px;
+  padding :7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border-color: #DCDCDC;
+  border-style:solid;
+  border-width: 1px;
+  margin-right: 10px;
+  background-color: #ffffff;
+  color: #919191;
+  border-radius: 31px;
+  margin-bottom: 0px;
+}
+.recommand_button{
+  font-size: 20px;
+  font-weight: 500;
+  background-color: #DA4661;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  padding: 15px 90px;
+
+
+}
+footer {
+  font-weight: 200;
+  height: 80px;
+  padding-left: 60px;
+  background-color: #DD0050;
+  color: #fff;
+  display: flex; /* Flexbox를 활성화 */
+  align-items: center; /* 세로 방향 중앙 정렬 */
+
+  /* position: fixed; */
+  bottom: 0; /* 아래에 붙임 */
+  width: 100%; /* 가로 폭을 꽉 채움 */
+
+  
 }
