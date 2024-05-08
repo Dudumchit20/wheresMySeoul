@@ -1,0 +1,16 @@
+.selected_filter_button{
+      /* width: 68px; */
+  height: 40px;
+  padding :7px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  border-color: #fcaab9;
+  border-style:solid;
+  border-width: 1px;
+  margin-right: 10px;
+  background-color: #ffffff;
+  color: #DA4661;
+  border-radius: 31px;
+  margin-bottom: 0px;
+
+}
