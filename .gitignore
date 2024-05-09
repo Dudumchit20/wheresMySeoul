@@ -1,39 +1,39 @@
-HELP.md
-.gradle
-build/
-!gradle/wrapper/gradle-wrapper.jar
-!**/src/main/**/build/
-!**/src/test/**/build/
+wheresMySeoul/backend/awes/HELP.md
+wheresMySeoul/backend/awes/.gradle
+wheresMySeoul/backend/awes/build/
+!wheresMySeoul/backend/awes/gradle/wrapper/gradle-wrapper.jar
+!wheresMySeoul/backend/awes/**/src/main/**/build/
+!wheresMySeoul/backend/awes/**/src/test/**/build/
 
 ### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-bin/
-!**/src/main/**/bin/
-!**/src/test/**/bin/
+wheresMySeoul/backend/awes/.apt_generated
+wheresMySeoul/backend/awes/.classpath
+wheresMySeoul/backend/awes/.factorypath
+wheresMySeoul/backend/awes/.project
+wheresMySeoul/backend/awes/.settings
+wheresMySeoul/backend/awes/.springBeans
+wheresMySeoul/backend/awes/.sts4-cache
+wheresMySeoul/backend/awes/bin/
+!wheresMySeoul/backend/awes/**/src/main/**/bin/
+!wheresMySeoul/backend/awes/**/src/test/**/bin/
 
 ### IntelliJ IDEA ###
-application.properties
+wheresMySeoul/backend/awes/application.properties
 
-.idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+wheresMySeoul/backend/awes/.idea
+wheresMySeoul/backend/awes/*.iws
+wheresMySeoul/backend/awes/*.iml
+wheresMySeoul/backend/awes/*.ipr
+wheresMySeoul/backend/awes/out/
+!wheresMySeoul/backend/awes/**/src/main/**/out/
+!wheresMySeoul/backend/awes/**/src/test/**/out/
 
 ### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+wheresMySeoul/backend/awes/nbproject/private/
+wheresMySeoul/backend/awes/nbbuild/
+wheresMySeoul/backend/awes/dist/
+wheresMySeoul/backend/awes/nbdist/
+wheresMySeoul/backend/awes/.nb-gradle/
 
 ### VS Code ###
-.vscode/
+wheresMySeoul/backend/awes/.vscode/
