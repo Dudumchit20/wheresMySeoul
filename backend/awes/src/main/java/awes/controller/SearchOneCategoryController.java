@@ -1,10 +1,15 @@
 package awes.controller;
 
+import awes.entity.TbSebcTourStreetKor;
+import awes.entity.TbVwAttractions;
 import awes.entity.TbVwNature;
 import awes.entity.TbVwShopping;
 import awes.model.ResultOneCategory;
 import awes.model.ResultRecommend;
 import awes.model.SearchOneCategory;
+import awes.model.TourStreetKorDto;
+import awes.service.TbSebcTourStreetKorService;
+import awes.service.TbVwAttractionsService;
 import awes.service.TbVwNatureService;
 import awes.service.TbVwShoppingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +26,11 @@ public class SearchOneCategoryController {
     private TbVwNatureService natureService;
     @Autowired
     private TbVwShoppingService shoppingService;
+    @Autowired
+    private TbVwAttractionsService attractionsService;
+    @Autowired
+    private TbSebcTourStreetKorService sebcTourStreetKorService;
 
-
-    String address, category;
     @GetMapping("/testAPI")
     public List<SearchOneCategory> testAPI
             (@RequestParam(value="address") String address,
@@ -45,6 +52,7 @@ public class SearchOneCategoryController {
         System.out.println("Category: " + category);
 
         List<ResultOneCategory> results = new ArrayList<>();
+        List<TourStreetKorDto> resultsTour = new ArrayList<>();
         if ("자연".equals(category)) {
             List<TbVwNature> natures = natureService.findByLanguageAndAddress("ko", address);
             for (TbVwNature nature : natures) {
@@ -67,8 +75,65 @@ public class SearchOneCategoryController {
                 roc.setWebsite(shopping.getWebsite());
                 results.add(roc);
             }
+        }else if ("명소".equals(category)) {
+            List<TbVwAttractions> attractions = attractionsService.findByLanguageAndAddress("ko", address);
+            for(TbVwAttractions attraction : attractions) {
+                ResultOneCategory roc = new ResultOneCategory(attraction.getNewAddress());
+                roc.setName(attraction.getName());
+                roc.setContentUrl(attraction.getContentUrl());
+                roc.setAddress(attraction.getAddress());
+                roc.setPhoneNumber(attraction.getPhoneNumber());
+                roc.setWebsite(attraction.getWebsite());
+                results.add(roc);
+            }
+        }else if ("관광거리".equals(category)) {
+            List<TbSebcTourStreetKor> tbSebcTourStreetKors = sebcTourStreetKorService.findByAddress(address);
+            for(TbSebcTourStreetKor sebcTourStreetKor : tbSebcTourStreetKors) {
+                TourStreetKorDto roc = new TourStreetKorDto();
+                roc.setKey(sebcTourStreetKor.getKey());
+                roc.setSearchKeyword(sebcTourStreetKor.getSearchKeyword());
+                roc.setAlias(sebcTourStreetKor.getAlias());
+                roc.setDisplayName(sebcTourStreetKor.getDisplayName());
+                roc.setLotAddress(sebcTourStreetKor.getLotAddress());
+                roc.setLegalCity(sebcTourStreetKor.getLegalCity());
+                roc.setLegalDistrict(sebcTourStreetKor.getLegalDistrict());
+                roc.setLegalTown(sebcTourStreetKor.getLegalTown());
+                roc.setAdminCity(sebcTourStreetKor.getAdminCity());
+                roc.setAdminDistrict(sebcTourStreetKor.getAdminDistrict());
+                roc.setAdminTown(sebcTourStreetKor.getAdminTown());
+                roc.setCenterCoordX(sebcTourStreetKor.getCenterCoordX());
+                roc.setCenterCoordY(sebcTourStreetKor.getCenterCoordY());
+                resultsTour.add(roc);
+            }
+        }else if ("문화".equals(category)) {
+            // 추가 예정
+            System.out.println("문화 데이터 추가 예정");
+        }else if ("음식".equals(category)) {
+            List<TbVwShopping> shoppings = shoppingService.findByLanguageAndAddress("ko", address);
+            for (TbVwShopping shopping : shoppings) {
+                ResultOneCategory roc = new ResultOneCategory(shopping.getNewAddress());
+                roc.setName(shopping.getName());
+                roc.setContentUrl(shopping.getContentUrl());
+                roc.setAddress(shopping.getAddress());
+                roc.setPhoneNumber(shopping.getPhoneNumber());
+                roc.setWebsite(shopping.getWebsite());
+                results.add(roc);
+            }
+
+        }else if ("외국인".equals(category)) {
+            List<TbVwShopping> shoppings = shoppingService.findByLanguageAndAddress("ko", address);
+            for (TbVwShopping shopping : shoppings) {
+                ResultOneCategory roc = new ResultOneCategory(shopping.getNewAddress());
+                roc.setName(shopping.getName());
+                roc.setContentUrl(shopping.getContentUrl());
+                roc.setAddress(shopping.getAddress());
+                roc.setPhoneNumber(shopping.getPhoneNumber());
+                roc.setWebsite(shopping.getWebsite());
+                results.add(roc);
+            }
         }
-        return results;
+       return results;
+
     }
 
 
@@ -84,7 +149,7 @@ public class SearchOneCategoryController {
             @RequestParam(value = "foreigner", defaultValue = "0") int foreigner
     ) {
         //
-        this.address = address;
+       
         List<ResultRecommend> resultRecommendList = new ArrayList<>();
         // 쿼리 조회하는 부분 필요
 
