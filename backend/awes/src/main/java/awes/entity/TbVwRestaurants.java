@@ -1,10 +1,13 @@
 package awes.entity;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_restaurants")
+public class TbVwRestaurants {
 
     @Id
     private Integer id;
@@ -15,17 +18,13 @@ public class TbVwNature {
     private String newAddress;
     private String phoneNumber;
     private String website;
-
-    @Column(length = 65535, columnDefinition = "Text")
     private String operatingHours;
-
-    private String operatingDays;
-    private String holidays;
-
-    @Column(length = 65535, columnDefinition = "Text")
     private String trafficInfo;
+    private String homepageLanguage;
+    private String signatureDish;
 
-    // Getter와 Setter
+    // Constructors, Getters, and Setters
+
     public Integer getId() {
         return id;
     }
@@ -98,27 +97,27 @@ public class TbVwNature {
         this.operatingHours = operatingHours;
     }
 
-    public String getOperatingDays() {
-        return operatingDays;
-    }
-
-    public void setOperatingDays(String operatingDays) {
-        this.operatingDays = operatingDays;
-    }
-
-    public String getHolidays() {
-        return holidays;
-    }
-
-    public void setHolidays(String holidays) {
-        this.holidays = holidays;
-    }
-
     public String getTrafficInfo() {
         return trafficInfo;
     }
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public String getHomepageLanguage() {
+        return homepageLanguage;
+    }
+
+    public void setHomepageLanguage(String homepageLanguage) {
+        this.homepageLanguage = homepageLanguage;
+    }
+
+    public String getSignatureDish() {
+        return signatureDish;
+    }
+
+    public void setSignatureDish(String signatureDish) {
+        this.signatureDish = signatureDish;
     }
 }

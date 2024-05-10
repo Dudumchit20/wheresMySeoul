@@ -3,10 +3,11 @@ package awes.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_shopping")
+public class TbVwShopping {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String language;
     private String name;
@@ -15,17 +16,11 @@ public class TbVwNature {
     private String newAddress;
     private String phoneNumber;
     private String website;
-
-    @Column(length = 65535, columnDefinition = "Text")
     private String operatingHours;
-
-    private String operatingDays;
-    private String holidays;
-
-    @Column(length = 65535, columnDefinition = "Text")
     private String trafficInfo;
 
-    // Getter와 Setter
+    // Constructors, Getters, and Setters
+
     public Integer getId() {
         return id;
     }
@@ -96,22 +91,6 @@ public class TbVwNature {
 
     public void setOperatingHours(String operatingHours) {
         this.operatingHours = operatingHours;
-    }
-
-    public String getOperatingDays() {
-        return operatingDays;
-    }
-
-    public void setOperatingDays(String operatingDays) {
-        this.operatingDays = operatingDays;
-    }
-
-    public String getHolidays() {
-        return holidays;
-    }
-
-    public void setHolidays(String holidays) {
-        this.holidays = holidays;
     }
 
     public String getTrafficInfo() {

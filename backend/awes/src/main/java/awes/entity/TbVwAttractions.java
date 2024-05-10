@@ -2,30 +2,54 @@ package awes.entity;
 
 import jakarta.persistence.*;
 
+import java.sql.Date;
+
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_attractions")
+public class TbVwAttractions {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String language;
     private String name;
+
+    @Column(name = "content_url")
     private String contentUrl;
+
     private String address;
+
+    @Column(name = "new_address")
     private String newAddress;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "fax_number")
+    private String faxNumber;
+
     private String website;
 
-    @Column(length = 65535, columnDefinition = "Text")
+    @Column(name = "operating_hours", columnDefinition = "TEXT")
     private String operatingHours;
 
+    @Column(name = "operating_days", columnDefinition = "TEXT")
     private String operatingDays;
+
+    @Column(name = "holidays", columnDefinition = "TEXT")
     private String holidays;
 
-    @Column(length = 65535, columnDefinition = "Text")
+    @Column(name = "traffic_info", columnDefinition = "TEXT")
     private String trafficInfo;
 
-    // Getter와 Setter
+    @Column(name = "tags", columnDefinition = "TEXT")
+    private String tags;
+
+    @Column(name = "accessibility", columnDefinition = "TEXT")
+    private String accessibility;
+
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
@@ -82,6 +106,14 @@ public class TbVwNature {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getFaxNumber() {
+        return faxNumber;
+    }
+
+    public void setFaxNumber(String faxNumber) {
+        this.faxNumber = faxNumber;
+    }
+
     public String getWebsite() {
         return website;
     }
@@ -120,5 +152,21 @@ public class TbVwNature {
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getAccessibility() {
+        return accessibility;
+    }
+
+    public void setAccessibility(String accessibility) {
+        this.accessibility = accessibility;
     }
 }
