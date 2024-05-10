@@ -40,6 +40,9 @@ public class SearchOneCategoryController {
     public List<ResultOneCategory> searchOneCategory
             (@RequestParam(value="address", defaultValue = "중구") String address,
              @RequestParam(value = "category", defaultValue = "쇼핑") String category) {
+        // 여기에서 파라미터 값 출력
+        System.out.println("Address: " + address);
+        System.out.println("Category: " + category);
 
         List<ResultOneCategory> results = new ArrayList<>();
         if ("자연".equals(category)) {
