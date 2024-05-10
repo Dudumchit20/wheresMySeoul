@@ -1,4 +1,4 @@
-// src/App.js
+// src/Home.js
 
 import React from "react";
  import Map from './Map';
@@ -8,6 +8,7 @@ import FilterButtons from "./FilterButtons";
 import ReFilterButtons from "./ReFilterButtons";
 import NumFilterButtons from "./NumFilterButtons";
 import LanSelection from "./LanSelection";
+import WeatherComponent from "./weather/weather";
 
 function App() {
   // const handleClick = () => {
@@ -33,16 +34,7 @@ function App() {
             <h2>현재 위치</h2> 
             <h5>현재 위치 혹은 원하는 위치를 기반으로 서비스를 제공합니다.</h5>
           </div>
-          
-
-          <div className="location_button">
-
-            <button className="button_none"  >
-              <img src="/png/search.png" alt="search" /> 
-            </button>
-
             <TextField/>
-          </div>
         </div>
        
 
@@ -51,11 +43,7 @@ function App() {
         <div className="double-item">
           <div className="block_weather">
             <h2>오늘의 관광날씨는?</h2>
-            <div className="weather_container">
-              <div className="weather"> 16°C</div>
-              <div className="weather_sub"> 강수확률: 10% <br/>습도: 66% <br/>풍속: 1m/s <br/> </div>
-              <img src="/png/weather/sun.png" alt="sun" /> 
-            </div>
+            <WeatherComponent/>
             
             <h5>관광 시 추천하는 준비물</h5>
             <div className="weather_container">

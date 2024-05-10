@@ -1,7 +1,5 @@
 {
   "dependencies": {
     "leaflet": "^1.9.4"
-  },
-  "proxy": "https://naveropenapi.apigw.ntruss.com"
-
+  }
 }
