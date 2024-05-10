@@ -22,4 +22,13 @@ public class TbVwNatureService {
                 .filter(item -> "ko".equals(item.getLanguage()))
                 .collect(Collectors.toList());
     }
+
+
+    public List<TbVwNature> findByLanguageAndAddress(String language, String address) {
+        List<TbVwNature> items = repository.findAll();
+        return items.stream()
+                .filter(item -> language.equals(item.getLanguage()))
+                .filter(item -> item.getNewAddress() != null && item.getNewAddress().contains(address))
+                .collect(Collectors.toList());
+    }
 }

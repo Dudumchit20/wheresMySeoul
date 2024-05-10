@@ -23,9 +23,9 @@ public class TbTourInformation {
     private String winterOpen;
     private String winterClose;
     private Integer averageStaff;
-    private Boolean englishAvailable;
-    private Boolean japaneseAvailable;
-    private Boolean chineseAvailable;
+    private Character englishAvailable;
+    private Character japaneseAvailable;
+    private String chineseAvailable; // Y로 표시된다고 함
     private String otherLanguages;
     private String phoneNumber;
     private String address;
@@ -134,28 +134,28 @@ public class TbTourInformation {
         this.averageStaff = averageStaff;
     }
 
-    public Boolean getEnglishAvailable() {
+    public Character getEnglishAvailable() {
         return englishAvailable;
     }
 
-    public void setEnglishAvailable(Boolean englishAvailable) {
+    public void setEnglishAvailable(Character englishAvailable) {
         this.englishAvailable = englishAvailable;
     }
 
-    public Boolean getJapaneseAvailable() {
+    public Character getJapaneseAvailable() {
         return japaneseAvailable;
     }
 
-    public void setJapaneseAvailable(Boolean japaneseAvailable) {
+    public void setJapaneseAvailable(Character japaneseAvailable) {
         this.japaneseAvailable = japaneseAvailable;
     }
 
-    public Boolean getChineseAvailable() {
+    public String getChineseAvailable() {
         return chineseAvailable;
     }
 
-    public void setChineseAvailable(Boolean chineseAvailable) {
-        this.chineseAvailable = chineseAvailable;
+    public void setChineseAvailable(Character chineseAvailable) {
+        this.chineseAvailable = String.valueOf(chineseAvailable);
     }
 
     public String getOtherLanguages() {

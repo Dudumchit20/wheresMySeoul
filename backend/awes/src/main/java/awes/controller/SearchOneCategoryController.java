@@ -1,8 +1,13 @@
 package awes.controller;
 
+import awes.entity.TbVwNature;
+import awes.entity.TbVwShopping;
 import awes.model.ResultOneCategory;
 import awes.model.ResultRecommend;
 import awes.model.SearchOneCategory;
+import awes.service.TbVwNatureService;
+import awes.service.TbVwShoppingService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +17,12 @@ import java.util.List;
 
 @RestController
 public class SearchOneCategoryController {
+    @Autowired
+    private TbVwNatureService natureService;
+    @Autowired
+    private TbVwShoppingService shoppingService;
+
+
     String address, category;
     @GetMapping("/testAPI")
     public List<SearchOneCategory> testAPI
@@ -27,28 +38,34 @@ public class SearchOneCategoryController {
 
     @GetMapping("/searchOneCategory")
     public List<ResultOneCategory> searchOneCategory
-            (@RequestParam(value="address") String address,
-             @RequestParam(value = "category") String category) {
-        //
-       this.address = address;
-       this.category = category;
-        List<ResultOneCategory> resultOneCategoryList = new ArrayList<>();
-        // 쿼리 조회하는 부분 필요
-        if (category.equals("자연")){
-            // TbVwNature 테이블의 newAddress 목록을 얻고 싶음
-            // language는 ko, newAddress는 this.address가 포함된 문자열인 것으로 필터링
-            // resultOneCategoryList에 저장해서 리턴하여 사용자가 받아볼 수 있게
-            resultOneCategoryList.add(new ResultOneCategory("서울대공원"));
-            resultOneCategoryList.add(new ResultOneCategory("장미공원"));
-            resultOneCategoryList.add(new ResultOneCategory("식물원"));
-        } else if (category.equals("쇼핑")) {
-            // TbVwShopping 테이블의 newAddress 목록을 얻고 싶음
-            //  language는 ko, newAddress는 this.address가 포함된 문자열인 것으로 필터링
-            // resultOneCategoryList에 저장해서 리턴하여 사용자가 받아볼 수 있게
-            resultOneCategoryList.add(new ResultOneCategory("노원백화점"));
-            resultOneCategoryList.add(new ResultOneCategory("현대시티아울렛"));
+            (@RequestParam(value="address", defaultValue = "중구") String address,
+             @RequestParam(value = "category", defaultValue = "쇼핑") String category) {
+
+        List<ResultOneCategory> results = new ArrayList<>();
+        if ("자연".equals(category)) {
+            List<TbVwNature> natures = natureService.findByLanguageAndAddress("ko", address);
+            for (TbVwNature nature : natures) {
+                ResultOneCategory roc = new ResultOneCategory(nature.getNewAddress());
+                roc.setName(nature.getName());
+                roc.setContentUrl(nature.getContentUrl());
+                roc.setAddress(nature.getAddress());
+                roc.setPhoneNumber(nature.getPhoneNumber());
+                roc.setWebsite(nature.getWebsite());
+                results.add(roc);
+            }
+        } else if ("쇼핑".equals(category)) {
+            List<TbVwShopping> shoppings = shoppingService.findByLanguageAndAddress("ko", address);
+            for (TbVwShopping shopping : shoppings) {
+                ResultOneCategory roc = new ResultOneCategory(shopping.getNewAddress());
+                roc.setName(shopping.getName());
+                roc.setContentUrl(shopping.getContentUrl());
+                roc.setAddress(shopping.getAddress());
+                roc.setPhoneNumber(shopping.getPhoneNumber());
+                roc.setWebsite(shopping.getWebsite());
+                results.add(roc);
+            }
         }
-        return resultOneCategoryList;
+        return results;
     }
 
 

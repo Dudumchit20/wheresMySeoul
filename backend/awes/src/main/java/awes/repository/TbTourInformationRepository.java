@@ -1,4 +1,9 @@
 package awes.repository;
 
-public interface TbTourInformationRepository {
+import awes.entity.TbTourInformation;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface TbTourInformationRepository extends JpaRepository<TbTourInformation, String> {
 }

@@ -1,132 +1,172 @@
 package awes.entity;
 
+import jakarta.persistence.*;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import java.sql.Date;
 
 @Entity
 @Table(name = "tb_vw_attractions")
 public class TbVwAttractions {
 
     @Id
-    private String key;
-    private String searchKeyword;
-    private String alias;
-    private String displayName;
-    private String lotAddress;
-    private String legalCity;
-    private String legalDistrict;
-    private String legalTown;
-    private String adminCity;
-    private String adminDistrict;
-    private String adminTown;
-    private Double centerCoordX;
-    private Double centerCoordY;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String language;
+    private String name;
+
+    @Column(name = "content_url")
+    private String contentUrl;
+
+    private String address;
+
+    @Column(name = "new_address")
+    private String newAddress;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "fax_number")
+    private String faxNumber;
+
+    private String website;
+
+    @Column(name = "operating_hours", columnDefinition = "TEXT")
+    private String operatingHours;
+
+    @Column(name = "operating_days", columnDefinition = "TEXT")
+    private String operatingDays;
+
+    @Column(name = "holidays", columnDefinition = "TEXT")
+    private String holidays;
+
+    @Column(name = "traffic_info", columnDefinition = "TEXT")
+    private String trafficInfo;
+
+    @Column(name = "tags", columnDefinition = "TEXT")
+    private String tags;
+
+    @Column(name = "accessibility", columnDefinition = "TEXT")
+    private String accessibility;
 
     // Getters and Setters
-
-    public String getKey() {
-        return key;
+    public Integer getId() {
+        return id;
     }
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getSearchKeyword() {
-        return searchKeyword;
+    public String getLanguage() {
+        return language;
     }
 
-    public void setSearchKeyword(String searchKeyword) {
-        this.searchKeyword = searchKeyword;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-    public String getAlias() {
-        return alias;
+    public String getName() {
+        return name;
     }
 
-    public void setAlias(String alias) {
-        this.alias = alias;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public String getContentUrl() {
+        return contentUrl;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+    public void setContentUrl(String contentUrl) {
+        this.contentUrl = contentUrl;
     }
 
-    public String getLotAddress() {
-        return lotAddress;
+    public String getAddress() {
+        return address;
     }
 
-    public void setLotAddress(String lotAddress) {
-        this.lotAddress = lotAddress;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getLegalCity() {
-        return legalCity;
+    public String getNewAddress() {
+        return newAddress;
     }
 
-    public void setLegalCity(String legalCity) {
-        this.legalCity = legalCity;
+    public void setNewAddress(String newAddress) {
+        this.newAddress = newAddress;
     }
 
-    public String getLegalDistrict() {
-        return legalDistrict;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setLegalDistrict(String legalDistrict) {
-        this.legalDistrict = legalDistrict;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
-    public String getLegalTown() {
-        return legalTown;
+    public String getFaxNumber() {
+        return faxNumber;
     }
 
-    public void setLegalTown(String legalTown) {
-        this.legalTown = legalTown;
+    public void setFaxNumber(String faxNumber) {
+        this.faxNumber = faxNumber;
     }
 
-    public String getAdminCity() {
-        return adminCity;
+    public String getWebsite() {
+        return website;
     }
 
-    public void setAdminCity(String adminCity) {
-        this.adminCity = adminCity;
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
-    public String getAdminDistrict() {
-        return adminDistrict;
+    public String getOperatingHours() {
+        return operatingHours;
     }
 
-    public void setAdminDistrict(String adminDistrict) {
-        this.adminDistrict = adminDistrict;
+    public void setOperatingHours(String operatingHours) {
+        this.operatingHours = operatingHours;
     }
 
-    public String getAdminTown() {
-        return adminTown;
+    public String getOperatingDays() {
+        return operatingDays;
     }
 
-    public void setAdminTown(String adminTown) {
-        this.adminTown = adminTown;
+    public void setOperatingDays(String operatingDays) {
+        this.operatingDays = operatingDays;
     }
 
-    public Double getCenterCoordX() {
-        return centerCoordX;
+    public String getHolidays() {
+        return holidays;
     }
 
-    public void setCenterCoordX(Double centerCoordX) {
-        this.centerCoordX = centerCoordX;
+    public void setHolidays(String holidays) {
+        this.holidays = holidays;
     }
 
-    public Double getCenterCoordY() {
-        return centerCoordY;
+    public String getTrafficInfo() {
+        return trafficInfo;
     }
 
-    public void setCenterCoordY(Double centerCoordY) {
-        this.centerCoordY = centerCoordY;
+    public void setTrafficInfo(String trafficInfo) {
+        this.trafficInfo = trafficInfo;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getAccessibility() {
+        return accessibility;
+    }
+
+    public void setAccessibility(String accessibility) {
+        this.accessibility = accessibility;
     }
 }
