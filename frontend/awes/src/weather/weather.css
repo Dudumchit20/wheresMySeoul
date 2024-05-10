@@ -18,3 +18,17 @@
     font-weight:500;
     margin-right:auto;
   }
+  .mes{
+    color: #949494;
+    font-size: 12px;
+    margin: 3px;
+    margin-bottom: 10px;
+
+
+  }
+  .mes_title{
+    color: #313131;
+    font-size: 14px;
+    margin: 3px;
+    margin-top: 20px;
+  }

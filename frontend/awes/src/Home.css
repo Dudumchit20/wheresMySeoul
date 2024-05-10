@@ -111,7 +111,7 @@
     padding: 20px 30px;
   }
   .block2{
-    flex: 2; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
+    flex: 1.5; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
     background-color: #fff;
     border-radius: 23px;
     text-align: left;

@@ -1,16 +1,17 @@
 // src/Home.js
 
-import React from "react";
- import Map from './Map';
+import React, { useState } from 'react';import Map from './Map';
 import "./Home.css";
-import TextField from "./TextField";
+import LocationSearchField from "./TextField";
 import FilterButtons from "./FilterButtons";
 import ReFilterButtons from "./ReFilterButtons";
 import NumFilterButtons from "./NumFilterButtons";
 import LanSelection from "./LanSelection";
 import WeatherComponent from "./weather/weather";
-
+import HotPlaces from './hotPlace/HotPlace';
 function App() {
+  const [weatherData, setWeatherData] = useState(null);
+
   // const handleClick = () => {
   //   console.log("Button clicked!");
   // };
@@ -29,21 +30,23 @@ function App() {
 
     <div className="body-content">
       <div className="block">
-        <div className="weather_container">
-          <div className="container_row_left">
-            <h2>현재 위치</h2> 
-            <h5>현재 위치 혹은 원하는 위치를 기반으로 서비스를 제공합니다.</h5>
-          </div>
-            <TextField/>
-        </div>
-       
-
+            <LocationSearchField setWeatherData={setWeatherData}/>
       </div>
       <div className="item-container">
         <div className="double-item">
           <div className="block_weather">
             <h2>오늘의 관광날씨는?</h2>
-            <WeatherComponent/>
+            {weatherData && (
+              <WeatherComponent
+                temperature={weatherData.temperature}
+                precipitation={weatherData.precipitation}
+                humidity={weatherData.humidity}
+                windSpeed={weatherData.windSpeed}
+                mes_air={weatherData.mes_air}
+                mes_uv={weatherData.mes_uv}
+                mes_rain={weatherData.mes_rain}
+              />
+            )}
             
             <h5>관광 시 추천하는 준비물</h5>
             <div className="weather_container">
@@ -66,6 +69,7 @@ function App() {
           </div>
           <div className="block_top">
           <h2>서울의 핫플 Top5</h2>
+          <HotPlaces/>
           </div>    
         </div>
       
