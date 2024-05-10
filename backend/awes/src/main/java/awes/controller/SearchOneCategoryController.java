@@ -149,7 +149,7 @@ public class SearchOneCategoryController {
             @RequestParam(value = "foreigner", defaultValue = "0") int foreigner
     ) {
         //
-       
+
         List<ResultRecommend> resultRecommendList = new ArrayList<>();
         // 쿼리 조회하는 부분 필요
 
