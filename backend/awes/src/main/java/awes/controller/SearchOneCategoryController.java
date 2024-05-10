@@ -82,4 +82,6 @@ public class SearchOneCategoryController {
 
         return resultRecommendList;
     }
+
+
 }
