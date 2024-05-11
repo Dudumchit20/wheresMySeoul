@@ -1,0 +1,68 @@
+
+.textfield_container{
+    flex:1;
+    /* background-color: aqua; */
+    margin-left: 45px;
+
+  }
+  .location_button{
+    flex:1;
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* 세로 중앙 정렬 */
+    
+    /* width: 68px; */
+    height: 40px;
+    padding :7px 14px;
+    font-size: 14px;
+    cursor: pointer;
+    border-color: #DCDCDC;
+    border-style:solid;
+    border-width: 1px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    color: #919191;
+    border-radius: 31px;
+    margin-bottom: 0px;
+  }
+  
+  .button_none{
+    
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255, 0, 0, 0.0); 
+    /* 빨간색의 반투명 배경색 */
+    border: none;
+  }
+  .button_none img {
+    max-width: 100%; /* 이미지 최대 너비 */
+    max-height: 100%; /* 이미지 최대 높이 */
+  }
+  .results_dropdown{
+    font-size: 15px;
+  }
+  .result_row{
+    cursor: pointer;
+    padding: 10px;
+    border-bottom: 0.5px solid #91919197;
+
+    color: #919191;
+    /* background-color: aquamarine; */
+ 
+}
+.closest_spot_info{
+    color: #DA4661;
+    margin-top: 10px;
+    padding-top: 23px ;
+    padding-bottom: 5px;
+    font-size: 18px;
+    text-align: center;
+    border-top: 0.5px solid #c2c2c297;
+
+}
+strong{
+    color: #848484;
+    font-weight: 400;
+    font-size: 16px;
+    margin-right: 5px;
+}

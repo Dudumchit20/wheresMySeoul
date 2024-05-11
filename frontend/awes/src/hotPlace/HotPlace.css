@@ -1,0 +1,38 @@
+
+  .hot-places-list {
+    list-style-type: none;
+    padding:0;
+    
+  }
+  
+  .hot-place-item {
+    
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-color: #d7d7d7;
+    border-style:solid;
+    border-width: 1px;
+
+  }
+  
+  .hot-place-item h3 {
+    margin-top: 3px;
+    color: #e6899a;
+  }
+  
+  .hot-place-item p {
+    margin: 5px 0;
+  }
+  .top_title{
+    color: #313131;
+    font-size: 14px;
+    margin: 3px;
+    margin-top: 20px;
+  }
+  .top_content{
+    color: #949494;
+    font-size: 12px;
+    margin: 3px;
+    margin-bottom: 10px;
+  }
