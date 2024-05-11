@@ -1,17 +1,11 @@
 package awes.controller;
 
-import awes.entity.TbSebcTourStreetKor;
-import awes.entity.TbVwAttractions;
-import awes.entity.TbVwNature;
-import awes.entity.TbVwShopping;
+import awes.entity.*;
 import awes.model.ResultOneCategory;
 import awes.model.ResultRecommend;
 import awes.model.SearchOneCategory;
 import awes.model.TourStreetKorDto;
-import awes.service.TbSebcTourStreetKorService;
-import awes.service.TbVwAttractionsService;
-import awes.service.TbVwNatureService;
-import awes.service.TbVwShoppingService;
+import awes.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,6 +24,10 @@ public class SearchOneCategoryController {
     private TbVwAttractionsService attractionsService;
     @Autowired
     private TbSebcTourStreetKorService sebcTourStreetKorService;
+    @Autowired
+    private TbVwRestaurantsService restaurantsService;
+
+
 
     @GetMapping("/testAPI")
     public List<SearchOneCategory> testAPI
@@ -109,14 +107,14 @@ public class SearchOneCategoryController {
             // 추가 예정
             System.out.println("문화 데이터 추가 예정");
         }else if ("음식".equals(category)) {
-            List<TbVwShopping> shoppings = shoppingService.findByLanguageAndAddress("ko", address);
-            for (TbVwShopping shopping : shoppings) {
-                ResultOneCategory roc = new ResultOneCategory(shopping.getNewAddress());
-                roc.setName(shopping.getName());
-                roc.setContentUrl(shopping.getContentUrl());
-                roc.setAddress(shopping.getAddress());
-                roc.setPhoneNumber(shopping.getPhoneNumber());
-                roc.setWebsite(shopping.getWebsite());
+            List<TbVwRestaurants> restaurants = restaurantsService.findByLanguageAndAddress("ko", address);
+            for (TbVwRestaurants restaurant : restaurants) {
+                ResultOneCategory roc = new ResultOneCategory(restaurant.getNewAddress());
+                roc.setName(restaurant.getName());
+                roc.setContentUrl(restaurant.getContentUrl());
+                roc.setAddress(restaurant.getAddress());
+                roc.setPhoneNumber(restaurant.getPhoneNumber());
+                roc.setWebsite(restaurant.getWebsite());
                 results.add(roc);
             }
 

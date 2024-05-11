@@ -9,8 +9,6 @@ public class ResultOneCategory {
     private String contentUrl;
     private String address;
     private String newAddress;
-
-
     private String phoneNumber;
     private String website;
 //    private String operatingHours;
