@@ -16,8 +16,8 @@ public class ResultOneCategory {
 //    private String holidays;
 //    private String trafficInfo;
 
-    public ResultOneCategory(String newAddress) {
-        this.newAddress = newAddress;
+    public ResultOneCategory() {
+        //this.newAddress = newAddress;
     }
     public String getNewAddress() {
         return newAddress;
