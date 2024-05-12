@@ -24,10 +24,10 @@ public class TbTourInformation {
     @Column(name = "district_name")
     private String districtName;
 
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(name = "description")
     private String description;
 
-    @Column(name = "additional_services", columnDefinition = "TEXT")
+    @Column(name = "additional_services")
     private String additionalServices;
 
     @Column(name = "closed_days")
@@ -48,13 +48,13 @@ public class TbTourInformation {
     @Column(name = "average_staff")
     private Integer averageStaff;
 
-    @Column(name = "english_available", length = 1)
+    @Column(name = "english_available")
     private Character englishAvailable;
 
-    @Column(name = "japanese_available", length = 1)
+    @Column(name = "japanese_available")
     private Character japaneseAvailable;
 
-    @Column(name = "chinese_available", length = 1)
+    @Column(name = "chinese_available")
     private Character chineseAvailable;
 
     @Column(name = "other_languages")
@@ -72,7 +72,7 @@ public class TbTourInformation {
     @Column(name = "managing_organization")
     private String operatingOrganization;
 
-    @Column(name = "website_url", columnDefinition = "TEXT")
+    @Column(name = "website_url")
     private String websiteUrl;
 
     @Column(name = "latitude")
@@ -81,13 +81,13 @@ public class TbTourInformation {
     @Column(name = "longitude")
     private Double longitude;
 
-    @Column(name = "data_date", columnDefinition = "VARCHAR(20)")
+    @Column(name = "data_date")
     private String dataDate;
 
     // Assuming usage of Hibernate Spatial with a Point type for this example.
     // Uncomment and use the appropriate type if your application handles spatial types.
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location;
+//    @Column(name = "location")
+//    private Point location;
 
 
     public String getTourInfoName() {
@@ -282,11 +282,11 @@ public class TbTourInformation {
         this.dataDate = dataDate;
     }
 
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }

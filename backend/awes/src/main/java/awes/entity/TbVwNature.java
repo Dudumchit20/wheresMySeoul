@@ -32,7 +32,7 @@ public class TbVwNature {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "operating_hours", length = 65535, columnDefinition = "Text")
+    @Column(name = "operating_hours")
     private String operatingHours;
 
     @Column(name = "operating_days")
@@ -41,7 +41,7 @@ public class TbVwNature {
     @Column(name = "closed_days")
     private String holidays;  // Assuming 'holidays' maps to 'closed_days'
 
-    @Column(name = "traffic_info", length = 65535, columnDefinition = "Text")
+    @Column(name = "traffic_info")
     private String trafficInfo;
 
     @Column(name = "latitude")
@@ -52,8 +52,8 @@ public class TbVwNature {
 
     // Assuming usage of Hibernate Spatial with a Point type for this example.
     // Uncomment and use the appropriate type if your application handles spatial types.
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location;
+//    @Column(name = "location")
+//    private Point location;
 
     // Getter와 Setter
     public Integer getId() {
@@ -168,11 +168,11 @@ public class TbVwNature {
         this.longitude = longitude;
     }
 
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }

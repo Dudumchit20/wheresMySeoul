@@ -37,8 +37,8 @@ public class TbVwShopping {
     @Column(name = "longitude")
     private Double longitude;
 
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location; // Java에 적합한 타입 사용
+//    @Column(name = "location")
+//    private Point location; // Java에 적합한 타입 사용
 
 
     // Constructors, Getters, and Setters
@@ -139,11 +139,13 @@ public class TbVwShopping {
         this.longitude = longitude;
     }
 
-    public Point getLocation() {
-        return location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+
 }

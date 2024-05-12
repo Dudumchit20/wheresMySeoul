@@ -36,22 +36,22 @@ public class TbVwAttractions {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "operating_hours", columnDefinition = "TEXT")
+    @Column(name = "operating_hours")
     private String operatingHours;
 
-    @Column(name = "operating_days", columnDefinition = "TEXT")
+    @Column(name = "operating_days")
     private String operatingDays;
 
-    @Column(name = "closed_days", columnDefinition = "TEXT")
+    @Column(name = "closed_days")
     private String holidays;
 
-    @Column(name = "traffic_info", columnDefinition = "TEXT")
+    @Column(name = "traffic_info")
     private String trafficInfo;
 
-    @Column(name = "tags", columnDefinition = "TEXT")
+    @Column(name = "tags")
     private String tags;
 
-    @Column(name = "accessibility", columnDefinition = "TEXT")
+    @Column(name = "accessibility")
     private String accessibility;
 
     @Column(name = "latitude")
@@ -62,8 +62,8 @@ public class TbVwAttractions {
 
     // Assuming usage of Hibernate Spatial with a Point type for this example.
     // Uncomment and use the appropriate type if your application handles spatial types.
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location;
+//    @Column(name = "location")
+//    private Point location;
 
     // get set
 
@@ -203,11 +203,11 @@ public class TbVwAttractions {
         this.longitude = longitude;
     }
 
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }

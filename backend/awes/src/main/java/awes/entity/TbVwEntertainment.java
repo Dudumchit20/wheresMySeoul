@@ -56,8 +56,8 @@ public class TbVwEntertainment {
 
     // Assuming usage of Hibernate Spatial with a Point type for this example.
     // Uncomment and use the appropriate type if your application handles spatial types.
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location; // Adjust the type depending on your JPA provider's support for spatial types.
+//    @Column(name = "location")
+//    private Point location; // Adjust the type depending on your JPA provider's support for spatial types.
 
     // getter setter
 
@@ -190,11 +190,11 @@ public class TbVwEntertainment {
         this.longitude = longitude;
     }
 
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }

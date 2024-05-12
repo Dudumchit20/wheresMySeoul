@@ -26,6 +26,8 @@ public class SearchOneCategoryController {
     private TbVwRestaurantsService restaurantsService;
     @Autowired
     private TbTourInformationService tourInformationService;
+    @Autowired
+    private TbVwEntertainmentService entertainmentService;
 
 
 
@@ -100,8 +102,17 @@ public class SearchOneCategoryController {
                 results.add(roc);
             }
         }else if ("문화".equals(category)) {
-            // 추가 예정
-            System.out.println("문화 데이터 추가 예정");
+            List<TbVwEntertainment> tbVwEntertainments = entertainmentService.findByLanguageAndAddress("ko", address);
+            for (TbVwEntertainment entertainment : tbVwEntertainments) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(entertainment.getNewAddress());
+                roc.setName(entertainment.getName());
+                roc.setContentUrl(entertainment.getContentUrl());
+                roc.setAddress(entertainment.getAddress());
+                roc.setPhoneNumber(entertainment.getPhoneNumber());
+                roc.setWebsite(entertainment.getWebsite());
+                results.add(roc);
+            }
         }else if ("음식".equals(category)) {
             List<TbVwRestaurants> restaurants = restaurantsService.findByLanguageAndAddress("ko", address);
             for (TbVwRestaurants restaurant : restaurants) {

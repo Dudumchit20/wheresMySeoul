@@ -50,8 +50,8 @@ public class TbSebcTourStreetKor {
     private Double centerCoordY;
 
     // Assuming usage of Hibernate Spatial with a Point type for this example.
-    @Column(name = "location", columnDefinition = "Point")
-    private Point location;
+//    @Column(name = "location")
+//    private Point location;
 
 
     public String getKey() {
@@ -158,11 +158,11 @@ public class TbSebcTourStreetKor {
         this.centerCoordY = centerCoordY;
     }
 
-    public Point getLocation() {
-        return location;
-    }
-
-    public void setLocation(Point location) {
-        this.location = location;
-    }
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }
