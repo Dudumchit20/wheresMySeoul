@@ -1,27 +1,48 @@
 package awes.entity;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import org.locationtech.jts.geom.Point;
 
 @Entity
 @Table(name = "tb_vw_restaurants")
 public class TbVwRestaurants {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
+    @Column(name = "language")
     private String language;
+    @Column(name = "name")
     private String name;
+    @Column(name = "content_url")
     private String contentUrl;
+    @Column(name = "old_address")
     private String address;
+    @Column(name = "new_address")
     private String newAddress;
+    @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "website")
     private String website;
+    @Column(name = "operating_hours")
     private String operatingHours;
+    @Column(name = "traffic_info")
     private String trafficInfo;
+    @Column(name = "homepage_language")
     private String homepageLanguage;
-    private String signatureDish;
+    @Column(name = "main_dish")
+    private String mainDish;
+    @Column(name = "latitude")
+    private Double latitude;
+    @Column(name = "longitude")
+    private Double longitude;
+
+    // Note: Depending on how you handle spatial data, you might need to use a specific type or custom converter for the location.
+    // Assuming usage of Hibernate Spatial with a Point type for this example.
+    @Column(name = "location", columnDefinition = "Point")
+    private Point location;; // Adjust the type depending on your JPA provider's support for spatial types.
 
     // Constructors, Getters, and Setters
 
@@ -113,11 +134,35 @@ public class TbVwRestaurants {
         this.homepageLanguage = homepageLanguage;
     }
 
-    public String getSignatureDish() {
-        return signatureDish;
+    public Point getLocation() {
+        return location;
     }
 
-    public void setSignatureDish(String signatureDish) {
-        this.signatureDish = signatureDish;
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public String getMainDish() {
+        return mainDish;
+    }
+
+    public void setMainDish(String mainDish) {
+        this.mainDish = mainDish;
     }
 }

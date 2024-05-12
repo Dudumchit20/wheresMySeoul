@@ -1,11 +1,9 @@
 package awes.entity;
-
 import jakarta.persistence.*;
 import org.locationtech.jts.geom.Point;
-
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_entertainment")
+public class TbVwEntertainment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +19,7 @@ public class TbVwNature {
     private String contentUrl;
 
     @Column(name = "old_address")
-    private String address;  // Assuming 'address' should map to 'old_address'
+    private String address;
 
     @Column(name = "new_address")
     private String newAddress;
@@ -32,17 +30,23 @@ public class TbVwNature {
     @Column(name = "website")
     private String website;
 
-    @Column(name = "operating_hours", length = 65535, columnDefinition = "Text")
+    @Column(name = "operating_hours")
     private String operatingHours;
 
     @Column(name = "operating_days")
     private String operatingDays;
 
     @Column(name = "closed_days")
-    private String holidays;  // Assuming 'holidays' maps to 'closed_days'
+    private String closedDays;
 
-    @Column(name = "traffic_info", length = 65535, columnDefinition = "Text")
+    @Column(name = "traffic_info")
     private String trafficInfo;
+
+    @Column(name = "homepage_language")
+    private String homepageLanguage;
+
+    @Column(name = "stroller_rental")
+    private String strollerRental;
 
     @Column(name = "latitude")
     private Double latitude;
@@ -53,9 +57,11 @@ public class TbVwNature {
     // Assuming usage of Hibernate Spatial with a Point type for this example.
     // Uncomment and use the appropriate type if your application handles spatial types.
     @Column(name = "location", columnDefinition = "Point")
-    private Point location;
+    private Point location; // Adjust the type depending on your JPA provider's support for spatial types.
 
-    // Getter와 Setter
+    // getter setter
+
+
     public Integer getId() {
         return id;
     }
@@ -136,12 +142,12 @@ public class TbVwNature {
         this.operatingDays = operatingDays;
     }
 
-    public String getHolidays() {
-        return holidays;
+    public String getClosedDays() {
+        return closedDays;
     }
 
-    public void setHolidays(String holidays) {
-        this.holidays = holidays;
+    public void setClosedDays(String closedDays) {
+        this.closedDays = closedDays;
     }
 
     public String getTrafficInfo() {
@@ -150,6 +156,22 @@ public class TbVwNature {
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public String getHomepageLanguage() {
+        return homepageLanguage;
+    }
+
+    public void setHomepageLanguage(String homepageLanguage) {
+        this.homepageLanguage = homepageLanguage;
+    }
+
+    public String getStrollerRental() {
+        return strollerRental;
+    }
+
+    public void setStrollerRental(String strollerRental) {
+        this.strollerRental = strollerRental;
     }
 
     public Double getLatitude() {

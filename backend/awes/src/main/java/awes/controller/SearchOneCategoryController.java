@@ -2,9 +2,7 @@ package awes.controller;
 
 import awes.entity.*;
 import awes.model.ResultOneCategory;
-import awes.model.ResultRecommend;
 import awes.model.SearchOneCategory;
-import awes.model.TourStreetKorDto;
 import awes.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -135,36 +133,7 @@ public class SearchOneCategoryController {
     }
 
 
-    @GetMapping("/recommendLocation")
-    public List<ResultRecommend> recommendLocation(
-            @RequestParam(value = "address") String address,
-            @RequestParam(value = "attractions", defaultValue = "0") int attractions,
-            @RequestParam(value = "sights", defaultValue = "0") int sights,
-            @RequestParam(value = "culture", defaultValue = "0") int culture,
-            @RequestParam(value = "shopping", defaultValue = "0") int shopping,
-            @RequestParam(value = "nature", defaultValue = "0") int nature,
-            @RequestParam(value = "food", defaultValue = "0") int food,
-            @RequestParam(value = "foreigner", defaultValue = "0") int foreigner
-    ) {
-        //
 
-        List<ResultRecommend> resultRecommendList = new ArrayList<>();
-        // 쿼리 조회하는 부분 필요
-
-        if (attractions > 0){
-            // 해당 테이블 조회해서 해당 숫자만큼 해당 주소 영역의 row를 추출하여 리스트에 더해줌
-            resultRecommendList.add(new ResultRecommend("관광거리1"));
-            resultRecommendList.add(new ResultRecommend("관광거리2"));
-        }
-        if (sights > 0){
-            // 해당 테이블 조회해서 해당 숫자만큼 해당 주소 영역의 row를 추출하여 리스트에 더해줌
-            resultRecommendList.add(new ResultRecommend("명소1"));
-            resultRecommendList.add(new ResultRecommend("명소2"));
-            resultRecommendList.add(new ResultRecommend("명소3"));
-        }
-
-        return resultRecommendList;
-    }
 
 
 }

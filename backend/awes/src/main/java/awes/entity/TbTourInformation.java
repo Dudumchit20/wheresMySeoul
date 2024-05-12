@@ -1,42 +1,94 @@
 package awes.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.sql.Date;
-
+import org.locationtech.jts.geom.Point;
 @Entity
 @Table(name = "tb_tour_information")
 public class TbTourInformation {
 
     @Id
+    @Column(name = "name")
     private String tourInfoName;
-    private String locationName;
-    private String cityName;
-    private String districtName;
-    private String description;
-    private String additionalServices;
-    private String holiday;
-    private String summerOpen;
-    private String summerClose;
-    private String winterOpen;
-    private String winterClose;
-    private Integer averageStaff;
-    private Character englishAvailable;
-    private Character japaneseAvailable;
-    private String chineseAvailable; // Y로 표시된다고 함
-    private String otherLanguages;
-    private String phoneNumber;
-    private String address;
-    private String lotAddress;
-    private String operatingOrganization;
-    private String websiteUrl;
-    private Double latitude;
-    private Double longitude;
-    private java.sql.Date dataDate;
 
-    // Getters and Setters
+    @Column(name = "location_name")
+    private String locationName;
+
+    @Column(name = "city_name")
+    private String cityName;
+
+    @Column(name = "district_name")
+    private String districtName;
+
+    @Column(name = "description", columnDefinition = "TEXT")
+    private String description;
+
+    @Column(name = "additional_services", columnDefinition = "TEXT")
+    private String additionalServices;
+
+    @Column(name = "closed_days")
+    private String holiday;
+
+    @Column(name = "summer_start_time")
+    private String summerOpen;
+
+    @Column(name = "summer_end_time")
+    private String summerClose;
+
+    @Column(name = "winter_start_time")
+    private String winterOpen;
+
+    @Column(name = "winter_end_time")
+    private String winterClose;
+
+    @Column(name = "average_staff")
+    private Integer averageStaff;
+
+    @Column(name = "english_available", length = 1)
+    private Character englishAvailable;
+
+    @Column(name = "japanese_available", length = 1)
+    private Character japaneseAvailable;
+
+    @Column(name = "chinese_available", length = 1)
+    private Character chineseAvailable;
+
+    @Column(name = "other_languages")
+    private String otherLanguages;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "road_address")
+    private String address;
+
+    @Column(name = "lot_address")
+    private String lotAddress;
+
+    @Column(name = "managing_organization")
+    private String operatingOrganization;
+
+    @Column(name = "website_url", columnDefinition = "TEXT")
+    private String websiteUrl;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
+    @Column(name = "data_date", columnDefinition = "VARCHAR(20)")
+    private String dataDate;
+
+    // Assuming usage of Hibernate Spatial with a Point type for this example.
+    // Uncomment and use the appropriate type if your application handles spatial types.
+    @Column(name = "location", columnDefinition = "Point")
+    private Point location;
+
 
     public String getTourInfoName() {
         return tourInfoName;
@@ -150,12 +202,12 @@ public class TbTourInformation {
         this.japaneseAvailable = japaneseAvailable;
     }
 
-    public String getChineseAvailable() {
+    public Character getChineseAvailable() {
         return chineseAvailable;
     }
 
     public void setChineseAvailable(Character chineseAvailable) {
-        this.chineseAvailable = String.valueOf(chineseAvailable);
+        this.chineseAvailable = chineseAvailable;
     }
 
     public String getOtherLanguages() {
@@ -222,11 +274,19 @@ public class TbTourInformation {
         this.longitude = longitude;
     }
 
-    public Date getDataDate() {
+    public String getDataDate() {
         return dataDate;
     }
 
-    public void setDataDate(Date dataDate) {
+    public void setDataDate(String dataDate) {
         this.dataDate = dataDate;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
     }
 }

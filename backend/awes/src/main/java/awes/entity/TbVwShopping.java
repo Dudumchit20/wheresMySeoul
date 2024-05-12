@@ -1,7 +1,7 @@
 package awes.entity;
 
 import jakarta.persistence.*;
-
+import org.locationtech.jts.geom.Point;
 @Entity
 @Table(name = "tb_vw_shopping")
 public class TbVwShopping {
@@ -11,13 +11,35 @@ public class TbVwShopping {
     private Integer id;
     private String language;
     private String name;
+    @Column(name = "content_url")
     private String contentUrl;
+
+    @Column(name = "old_address")
     private String address;
+
+    @Column(name = "new_address")
     private String newAddress;
+
+    @Column(name = "phone_number")
     private String phoneNumber;
+
     private String website;
+
+    @Column(name = "operating_hours")
     private String operatingHours;
+
+    @Column(name = "traffic_info")
     private String trafficInfo;
+
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
+    @Column(name = "location", columnDefinition = "Point")
+    private Point location; // Java에 적합한 타입 사용
+
 
     // Constructors, Getters, and Setters
 
@@ -99,5 +121,29 @@ public class TbVwShopping {
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
     }
 }
