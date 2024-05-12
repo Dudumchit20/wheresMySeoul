@@ -1,17 +1,21 @@
 // src/Home.js
 
-import React, { useState } from 'react';import Map from './Map';
-
+import React, { useState } from 'react';
+import Map from './search/Map.js';
 import "./Home.css";
-import LocationSearchField from "./TextField";
-import FilterButtons from "./FilterButtons";
-import ReFilterButtons from "./ReFilterButtons";
-import NumFilterButtons from "./NumFilterButtons";
-import LanSelection from "./LanSelection";
+import LocationSearchField from "./recent_location/TextField";
+import FilterButtons from "./recommend/FilterButtons";
+import ReFilterButtons from "./search/ReFilterButtons";
+import NumFilterButtons from "./recommend/NumFilterButtons";
+import LanSelection from "./language/LanSelection";
 import WeatherComponent from "./weather/weather";
 import HotPlaces from './hotPlace/HotPlace';
+import logo from './logo.png'; // 이미지를 올바르게 임포트
+
 function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [selectedFilters, setSelectedFilters] = useState([]);
+
 
   // const handleClick = () => {
   //   console.log("Button clicked!");
@@ -21,7 +25,7 @@ function App() {
     <div className="app_container">
     <header className="header">
       <div className="app-header-left-content">
-        <h1>서울을 찾아서</h1>
+        <img className = "img_logo" src={logo} alt="로고 이미지"  />
         <h4>숨겨진 서울의 모습 찾아서, AI 기반 관광 추천 서비스</h4>
       </div>
       <div className="app-header-right-content">
@@ -78,8 +82,8 @@ function App() {
         <div className="block2">
           <h2>주변 관광지 찾아보기</h2>
           필터 (복수 선택 가능)
-          <ReFilterButtons/>  
-          < Map/>
+          <ReFilterButtons selectedFilters={selectedFilters} setSelectedFilters={setSelectedFilters} />
+          <Map selectedFilters={selectedFilters} />
         </div>
       </div>
       

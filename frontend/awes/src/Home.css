@@ -76,9 +76,15 @@
   
   .app-header-left-content {
     align-items: end; /* 왼쪽 컨텐츠를 왼쪽 정렬 */
-    
+    justify-content: flex-end; /* 내용을 아래쪽으로 정렬 */
+    align-items: center; /* 가로 축 중앙 정렬 */
+
+
   }
-  
+  .img_logo{
+    margin-bottom: 0;
+    height: 100px;
+  }
   .app-header-right-content {
     align-items: flex-end;   /* 오른쪽 컨텐츠를 오른쪽 정렬 */
     margin-left: auto; /* 왼쪽의 모든 여유 공간을 차지하여 오른쪽으로 밀어냅니다 */

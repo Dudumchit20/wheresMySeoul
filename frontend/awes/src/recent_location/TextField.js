@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { setKey, fromLatLng, fromAddress } from 'react-geocode';
-import WeatherComponent from './weather/weather';
+import WeatherComponent from '../weather/weather';
 import './TextField.css';
 
 const GOOGLE_MAPS_API_KEY = 'AIzaSyCoBqm6ZJlc2QRPAEZ8Op36nAklnfj5DsE'; // Replace with your actual key
