@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './HotPlace.css';
 
-const SEOUL_OPEN_DATA_AUTH_KEY = "515653596b79756a38384a77506645" // 서울 열린 데이터
+const SEOUL_OPEN_DATA_AUTH_KEY_= "515653596b79756a38384a77506645" // 서울 열린 데이터
 
 // 1부터 115까지 "POI001", "POI002", ..., "POI115" 형식의 리스트 생성
 const AREA_CODES = Array.from({ length: 115 }, (_, index) => {
@@ -18,10 +18,9 @@ function HotPlaces() {
     // 각 장소에 대한 비동기적인 혼잡도 데이터를 가져옵니다.
     const fetchPromises = AREA_CODES.map(async (code) => {
       try {
-        const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY}/json/citydata_ppltn/1/5/${code}`);
+        const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY_}/json/citydata_ppltn/1/5/${code}`);
         const data = await response.json();
-        const personData = data['SeoulRtd.citydata_ppltn']?.[0]; // 안전하게 인덱스에 접근
-  
+        const personData = data['SeoulRtd.citydata_ppltn']['0']; // 안전하게 인덱스에 접근
         if (personData) {
           // 인구 최소 및 최대값을 숫자로 변환하여 평균을 계산합니다.
           const minPopulation = parseInt(personData.AREA_PPLTN_MIN, 10);

@@ -111,13 +111,15 @@
     padding: 20px 30px;
   }
   .block2{
-    flex: 1.5; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
+    flex: 2; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
     background-color: #fff;
     border-radius: 23px;
     text-align: left;
     padding: 20px 30px;
     box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-  
+    display: flex;
+    flex-direction: column;
+
   }
   .double-item {
     display: flex;
@@ -130,6 +132,7 @@
     margin-bottom: 15px;
     display: flex;
     flex-direction: wrap;
+    height: 100%;
   }
   .filters{
     margin: 20px 0px;

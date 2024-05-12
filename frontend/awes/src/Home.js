@@ -1,6 +1,7 @@
 // src/Home.js
 
 import React, { useState } from 'react';import Map from './Map';
+
 import "./Home.css";
 import LocationSearchField from "./TextField";
 import FilterButtons from "./FilterButtons";

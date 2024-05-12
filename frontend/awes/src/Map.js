@@ -20,12 +20,15 @@ const Map = () => {
       popupAnchor: [1, -34] // 팝업 위치 조절
     });
 
+    // Leaflet 맵의 중앙을 서울로 설정합니다.
+    map.setView([37.5665, 126.9780], 13);
+
     // 현재 위치를 가져와서 지도에 마커로 표시합니다.
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         const { latitude, longitude } = position.coords;
-        
-        // 현재 위치를 지도의 중앙으로 설정
+
+        // Leaflet 맵의 중앙을 현재 위치로 설정합니다.
         map.setView([latitude, longitude], 13);
 
         // 현재 위치에 마커 추가
@@ -45,7 +48,7 @@ const Map = () => {
   }, []); // 두 번째 매개변수로 빈 배열을 전달하여 컴포넌트가 처음으로 렌더링될 때만 실행되도록 합니다.
 
   return (
-    <div id="map" style={{ width: '100%', height: '400px' }}></div>
+    <div id="map" style={{ flex:1 }}></div>
   );
 };
 
