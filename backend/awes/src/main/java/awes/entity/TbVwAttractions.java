@@ -1,7 +1,7 @@
 package awes.entity;
 
 import jakarta.persistence.*;
-
+import org.locationtech.jts.geom.Point;
 import java.sql.Date;
 
 @Entity
@@ -12,12 +12,16 @@ public class TbVwAttractions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(name = "language")
     private String language;
+
+    @Column(name = "name")
     private String name;
 
     @Column(name = "content_url")
     private String contentUrl;
 
+    @Column(name = "old_address")
     private String address;
 
     @Column(name = "new_address")
@@ -29,27 +33,40 @@ public class TbVwAttractions {
     @Column(name = "fax_number")
     private String faxNumber;
 
+    @Column(name = "website")
     private String website;
 
-    @Column(name = "operating_hours", columnDefinition = "TEXT")
+    @Column(name = "operating_hours")
     private String operatingHours;
 
-    @Column(name = "operating_days", columnDefinition = "TEXT")
+    @Column(name = "operating_days")
     private String operatingDays;
 
-    @Column(name = "holidays", columnDefinition = "TEXT")
+    @Column(name = "closed_days")
     private String holidays;
 
-    @Column(name = "traffic_info", columnDefinition = "TEXT")
+    @Column(name = "traffic_info")
     private String trafficInfo;
 
-    @Column(name = "tags", columnDefinition = "TEXT")
+    @Column(name = "tags")
     private String tags;
 
-    @Column(name = "accessibility", columnDefinition = "TEXT")
+    @Column(name = "accessibility")
     private String accessibility;
 
-    // Getters and Setters
+    @Column(name = "latitude")
+    private Double latitude;
+
+    @Column(name = "longitude")
+    private Double longitude;
+
+    // Assuming usage of Hibernate Spatial with a Point type for this example.
+    // Uncomment and use the appropriate type if your application handles spatial types.
+//    @Column(name = "location")
+//    private Point location;
+
+    // get set
+
     public Integer getId() {
         return id;
     }
@@ -169,4 +186,28 @@ public class TbVwAttractions {
     public void setAccessibility(String accessibility) {
         this.accessibility = accessibility;
     }
+
+    public Double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
+//    public Point getLocation() {
+//        return location;
+//    }
+//
+//    public void setLocation(Point location) {
+//        this.location = location;
+//    }
 }

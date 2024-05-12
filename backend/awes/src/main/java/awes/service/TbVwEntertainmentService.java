@@ -1,35 +1,35 @@
 package awes.service;
 
-import awes.entity.TbTourInformation;
 import awes.entity.TbVwAttractions;
-import awes.entity.TbVwShopping;
-import awes.repository.TbVwAttractionsRepository;
+import awes.entity.TbVwEntertainment;
+import awes.repository.TbVwEntertainmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class TbVwAttractionsService {
+public class TbVwEntertainmentService {
 
     @Autowired
-    private TbVwAttractionsRepository repository;
+    private TbVwEntertainmentRepository repository;
 
-    public List<TbVwAttractions> findAll() {
+    public List<TbVwEntertainment> findAll() {
         return repository.findAll();
     }
 
-    public List<TbVwAttractions> findByLanguageAndAddress(String language, String address) {
-        List<TbVwAttractions> items = repository.findAll();
+    public List<TbVwEntertainment> findByLanguageAndAddress(String language, String address) {
+        List<TbVwEntertainment> items = repository.findAll();
         return items.stream()
                 .filter(item -> language.equals(item.getLanguage()))
                 .filter(item -> item.getNewAddress() != null && item.getNewAddress().contains(address))
                 .collect(Collectors.toList());
     }
 
-    public List<TbVwAttractions> findNearby(double latitude, double longitude, int num) {
+    public List<TbVwEntertainment> findNearby(double latitude, double longitude, int num) {
         // num이 10 이상인지 체크해두기
-        List<TbVwAttractions> items = null;
+        List<TbVwEntertainment> items = null;
         if(num >=10){
             // num이 10개 이상이어서 10으로 올 때
             // 각 항목 당 모두 조회
