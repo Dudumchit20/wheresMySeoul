@@ -2,26 +2,20 @@ package awes.entity;
 
 import jakarta.persistence.*;
 import org.locationtech.jts.geom.Point;
-
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_shopping")
+public class TbVwShopping {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "language")
     private String language;
-
-    @Column(name = "name")
     private String name;
-
     @Column(name = "content_url")
     private String contentUrl;
 
     @Column(name = "old_address")
-    private String address;  // Assuming 'address' should map to 'old_address'
+    private String address;
 
     @Column(name = "new_address")
     private String newAddress;
@@ -29,17 +23,10 @@ public class TbVwNature {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "website")
     private String website;
 
     @Column(name = "operating_hours")
     private String operatingHours;
-
-    @Column(name = "operating_days")
-    private String operatingDays;
-
-    @Column(name = "closed_days")
-    private String holidays;  // Assuming 'holidays' maps to 'closed_days'
 
     @Column(name = "traffic_info")
     private String trafficInfo;
@@ -50,12 +37,12 @@ public class TbVwNature {
     @Column(name = "longitude")
     private Double longitude;
 
-    // Assuming usage of Hibernate Spatial with a Point type for this example.
-    // Uncomment and use the appropriate type if your application handles spatial types.
 //    @Column(name = "location")
-//    private Point location;
+//    private Point location; // Java에 적합한 타입 사용
 
-    // Getter와 Setter
+
+    // Constructors, Getters, and Setters
+
     public Integer getId() {
         return id;
     }
@@ -128,22 +115,6 @@ public class TbVwNature {
         this.operatingHours = operatingHours;
     }
 
-    public String getOperatingDays() {
-        return operatingDays;
-    }
-
-    public void setOperatingDays(String operatingDays) {
-        this.operatingDays = operatingDays;
-    }
-
-    public String getHolidays() {
-        return holidays;
-    }
-
-    public void setHolidays(String holidays) {
-        this.holidays = holidays;
-    }
-
     public String getTrafficInfo() {
         return trafficInfo;
     }
@@ -175,4 +146,6 @@ public class TbVwNature {
 //    public void setLocation(Point location) {
 //        this.location = location;
 //    }
+
+
 }

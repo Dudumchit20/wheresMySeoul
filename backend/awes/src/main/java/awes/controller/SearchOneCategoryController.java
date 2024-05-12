@@ -1,8 +1,10 @@
 package awes.controller;
 
+import awes.entity.*;
 import awes.model.ResultOneCategory;
-import awes.model.ResultRecommend;
 import awes.model.SearchOneCategory;
+import awes.service.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,7 +14,23 @@ import java.util.List;
 
 @RestController
 public class SearchOneCategoryController {
-    String address, category;
+    @Autowired
+    private TbVwNatureService natureService;
+    @Autowired
+    private TbVwShoppingService shoppingService;
+    @Autowired
+    private TbVwAttractionsService attractionsService;
+    @Autowired
+    private TbSebcTourStreetKorService sebcTourStreetKorService;
+    @Autowired
+    private TbVwRestaurantsService restaurantsService;
+    @Autowired
+    private TbTourInformationService tourInformationService;
+    @Autowired
+    private TbVwEntertainmentService entertainmentService;
+
+
+
     @GetMapping("/testAPI")
     public List<SearchOneCategory> testAPI
             (@RequestParam(value="address") String address,
@@ -27,59 +45,106 @@ public class SearchOneCategoryController {
 
     @GetMapping("/searchOneCategory")
     public List<ResultOneCategory> searchOneCategory
-            (@RequestParam(value="address") String address,
-             @RequestParam(value = "category") String category) {
-        //
-       this.address = address;
-       this.category = category;
-        List<ResultOneCategory> resultOneCategoryList = new ArrayList<>();
-        // 쿼리 조회하는 부분 필요
-        if (category.equals("자연")){
-            // TbVwNature 테이블의 newAddress 목록을 얻고 싶음
-            // language는 ko, newAddress는 this.address가 포함된 문자열인 것으로 필터링
-            // resultOneCategoryList에 저장해서 리턴하여 사용자가 받아볼 수 있게
-            resultOneCategoryList.add(new ResultOneCategory("서울대공원"));
-            resultOneCategoryList.add(new ResultOneCategory("장미공원"));
-            resultOneCategoryList.add(new ResultOneCategory("식물원"));
-        } else if (category.equals("쇼핑")) {
-            // TbVwShopping 테이블의 newAddress 목록을 얻고 싶음
-            //  language는 ko, newAddress는 this.address가 포함된 문자열인 것으로 필터링
-            // resultOneCategoryList에 저장해서 리턴하여 사용자가 받아볼 수 있게
-            resultOneCategoryList.add(new ResultOneCategory("노원백화점"));
-            resultOneCategoryList.add(new ResultOneCategory("현대시티아울렛"));
+            (@RequestParam(value="address", defaultValue = "중구") String address,
+             @RequestParam(value = "category", defaultValue = "쇼핑") String category) {
+        // 여기에서 파라미터 값 출력
+        System.out.println("Address: " + address);
+        System.out.println("Category: " + category);
+
+        List<ResultOneCategory> results = new ArrayList<>();
+        //List<TourStreetKorDto> resultsTour = new ArrayList<>();
+        if ("자연".equals(category)) {
+            List<TbVwNature> natures = natureService.findByLanguageAndAddress("ko", address);
+            for (TbVwNature nature : natures) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(nature.getNewAddress());
+                roc.setName(nature.getName());
+                roc.setContentUrl(nature.getContentUrl());
+                roc.setAddress(nature.getAddress());
+                roc.setPhoneNumber(nature.getPhoneNumber());
+                roc.setWebsite(nature.getWebsite());
+                results.add(roc);
+            }
+        } else if ("쇼핑".equals(category)) {
+            List<TbVwShopping> shoppings = shoppingService.findByLanguageAndAddress("ko", address);
+            for (TbVwShopping shopping : shoppings) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(shopping.getNewAddress());
+                roc.setName(shopping.getName());
+                roc.setContentUrl(shopping.getContentUrl());
+                roc.setAddress(shopping.getAddress());
+                roc.setPhoneNumber(shopping.getPhoneNumber());
+                roc.setWebsite(shopping.getWebsite());
+                results.add(roc);
+            }
+        }else if ("명소".equals(category)) {
+            List<TbVwAttractions> attractions = attractionsService.findByLanguageAndAddress("ko", address);
+            for(TbVwAttractions attraction : attractions) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(attraction.getNewAddress());
+                roc.setName(attraction.getName());
+                roc.setContentUrl(attraction.getContentUrl());
+                roc.setAddress(attraction.getAddress());
+                roc.setPhoneNumber(attraction.getPhoneNumber());
+                roc.setWebsite(attraction.getWebsite());
+                results.add(roc);
+            }
+        }else if ("관광거리".equals(category)) {
+            List<TbSebcTourStreetKor> tbSebcTourStreetKors = sebcTourStreetKorService.findByAddress(address);
+            for(TbSebcTourStreetKor sebcTourStreetKor : tbSebcTourStreetKors) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(sebcTourStreetKor.getLotAddress());
+                roc.setName(sebcTourStreetKor.getDisplayName());
+                roc.setContentUrl(sebcTourStreetKor.getAlias());
+                roc.setAddress(sebcTourStreetKor.getLotAddress());
+                roc.setPhoneNumber("번호없음");
+                roc.setWebsite("웹사이트없음");
+                results.add(roc);
+            }
+        }else if ("문화".equals(category)) {
+            List<TbVwEntertainment> tbVwEntertainments = entertainmentService.findByLanguageAndAddress("ko", address);
+            for (TbVwEntertainment entertainment : tbVwEntertainments) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(entertainment.getNewAddress());
+                roc.setName(entertainment.getName());
+                roc.setContentUrl(entertainment.getContentUrl());
+                roc.setAddress(entertainment.getAddress());
+                roc.setPhoneNumber(entertainment.getPhoneNumber());
+                roc.setWebsite(entertainment.getWebsite());
+                results.add(roc);
+            }
+        }else if ("음식".equals(category)) {
+            List<TbVwRestaurants> restaurants = restaurantsService.findByLanguageAndAddress("ko", address);
+            for (TbVwRestaurants restaurant : restaurants) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(restaurant.getNewAddress());
+                roc.setName(restaurant.getName());
+                roc.setContentUrl(restaurant.getContentUrl());
+                roc.setAddress(restaurant.getAddress());
+                roc.setPhoneNumber(restaurant.getPhoneNumber());
+                roc.setWebsite(restaurant.getWebsite());
+                results.add(roc);
+            }
+
+        }else if ("외국인".equals(category)) {
+            List<TbTourInformation> tourInformations = tourInformationService.findByAddress(address);
+            for (TbTourInformation tourInformation : tourInformations) {
+                ResultOneCategory roc = new ResultOneCategory();
+                roc.setNewAddress(tourInformation.getAddress());
+                roc.setName(tourInformation.getTourInfoName());
+                roc.setContentUrl(tourInformation.getLocationName());
+                roc.setAddress(tourInformation.getLotAddress());
+                roc.setPhoneNumber(tourInformation.getPhoneNumber());
+                roc.setWebsite(tourInformation.getWebsiteUrl());
+                results.add(roc);
+            }
         }
-        return resultOneCategoryList;
+       return results;
+
     }
 
 
-    @GetMapping("/recommendLocation")
-    public List<ResultRecommend> recommendLocation(
-            @RequestParam(value = "address") String address,
-            @RequestParam(value = "attractions", defaultValue = "0") int attractions,
-            @RequestParam(value = "sights", defaultValue = "0") int sights,
-            @RequestParam(value = "culture", defaultValue = "0") int culture,
-            @RequestParam(value = "shopping", defaultValue = "0") int shopping,
-            @RequestParam(value = "nature", defaultValue = "0") int nature,
-            @RequestParam(value = "food", defaultValue = "0") int food,
-            @RequestParam(value = "foreigner", defaultValue = "0") int foreigner
-    ) {
-        //
-        this.address = address;
-        List<ResultRecommend> resultRecommendList = new ArrayList<>();
-        // 쿼리 조회하는 부분 필요
 
-        if (attractions > 0){
-            // 해당 테이블 조회해서 해당 숫자만큼 해당 주소 영역의 row를 추출하여 리스트에 더해줌
-            resultRecommendList.add(new ResultRecommend("관광거리1"));
-            resultRecommendList.add(new ResultRecommend("관광거리2"));
-        }
-        if (sights > 0){
-            // 해당 테이블 조회해서 해당 숫자만큼 해당 주소 영역의 row를 추출하여 리스트에 더해줌
-            resultRecommendList.add(new ResultRecommend("명소1"));
-            resultRecommendList.add(new ResultRecommend("명소2"));
-            resultRecommendList.add(new ResultRecommend("명소3"));
-        }
 
-        return resultRecommendList;
-    }
+
 }

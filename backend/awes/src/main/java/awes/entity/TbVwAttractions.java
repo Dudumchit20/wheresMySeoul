@@ -2,10 +2,11 @@ package awes.entity;
 
 import jakarta.persistence.*;
 import org.locationtech.jts.geom.Point;
+import java.sql.Date;
 
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_attractions")
+public class TbVwAttractions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,13 +22,16 @@ public class TbVwNature {
     private String contentUrl;
 
     @Column(name = "old_address")
-    private String address;  // Assuming 'address' should map to 'old_address'
+    private String address;
 
     @Column(name = "new_address")
     private String newAddress;
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "fax_number")
+    private String faxNumber;
 
     @Column(name = "website")
     private String website;
@@ -39,10 +43,16 @@ public class TbVwNature {
     private String operatingDays;
 
     @Column(name = "closed_days")
-    private String holidays;  // Assuming 'holidays' maps to 'closed_days'
+    private String holidays;
 
     @Column(name = "traffic_info")
     private String trafficInfo;
+
+    @Column(name = "tags")
+    private String tags;
+
+    @Column(name = "accessibility")
+    private String accessibility;
 
     @Column(name = "latitude")
     private Double latitude;
@@ -55,7 +65,8 @@ public class TbVwNature {
 //    @Column(name = "location")
 //    private Point location;
 
-    // Getter와 Setter
+    // get set
+
     public Integer getId() {
         return id;
     }
@@ -112,6 +123,14 @@ public class TbVwNature {
         this.phoneNumber = phoneNumber;
     }
 
+    public String getFaxNumber() {
+        return faxNumber;
+    }
+
+    public void setFaxNumber(String faxNumber) {
+        this.faxNumber = faxNumber;
+    }
+
     public String getWebsite() {
         return website;
     }
@@ -150,6 +169,22 @@ public class TbVwNature {
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public String getTags() {
+        return tags;
+    }
+
+    public void setTags(String tags) {
+        this.tags = tags;
+    }
+
+    public String getAccessibility() {
+        return accessibility;
+    }
+
+    public void setAccessibility(String accessibility) {
+        this.accessibility = accessibility;
     }
 
     public Double getLatitude() {

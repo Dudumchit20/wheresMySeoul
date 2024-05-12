@@ -1,61 +1,50 @@
 package awes.entity;
 
+
 import jakarta.persistence.*;
 import org.locationtech.jts.geom.Point;
 
 @Entity
-@Table(name = "TbVwNature")
-public class TbVwNature {
+@Table(name = "tb_vw_restaurants")
+public class TbVwRestaurants {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
-
     @Column(name = "language")
     private String language;
-
     @Column(name = "name")
     private String name;
-
     @Column(name = "content_url")
     private String contentUrl;
-
     @Column(name = "old_address")
-    private String address;  // Assuming 'address' should map to 'old_address'
-
+    private String address;
     @Column(name = "new_address")
     private String newAddress;
-
     @Column(name = "phone_number")
     private String phoneNumber;
-
     @Column(name = "website")
     private String website;
-
     @Column(name = "operating_hours")
     private String operatingHours;
-
-    @Column(name = "operating_days")
-    private String operatingDays;
-
-    @Column(name = "closed_days")
-    private String holidays;  // Assuming 'holidays' maps to 'closed_days'
-
     @Column(name = "traffic_info")
     private String trafficInfo;
-
+    @Column(name = "homepage_language")
+    private String homepageLanguage;
+    @Column(name = "main_dish")
+    private String mainDish;
     @Column(name = "latitude")
     private Double latitude;
-
     @Column(name = "longitude")
     private Double longitude;
 
-    // Assuming usage of Hibernate Spatial with a Point type for this example.
-    // Uncomment and use the appropriate type if your application handles spatial types.
+
 //    @Column(name = "location")
 //    private Point location;
 
-    // Getter와 Setter
+    // Constructors, Getters, and Setters
+
     public Integer getId() {
         return id;
     }
@@ -128,28 +117,30 @@ public class TbVwNature {
         this.operatingHours = operatingHours;
     }
 
-    public String getOperatingDays() {
-        return operatingDays;
-    }
-
-    public void setOperatingDays(String operatingDays) {
-        this.operatingDays = operatingDays;
-    }
-
-    public String getHolidays() {
-        return holidays;
-    }
-
-    public void setHolidays(String holidays) {
-        this.holidays = holidays;
-    }
-
     public String getTrafficInfo() {
         return trafficInfo;
     }
 
     public void setTrafficInfo(String trafficInfo) {
         this.trafficInfo = trafficInfo;
+    }
+
+    public String getHomepageLanguage() {
+        return homepageLanguage;
+    }
+
+    public void setHomepageLanguage(String homepageLanguage) {
+        this.homepageLanguage = homepageLanguage;
+    }
+
+
+
+    public Double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
     }
 
     public Double getLatitude() {
@@ -160,12 +151,12 @@ public class TbVwNature {
         this.latitude = latitude;
     }
 
-    public Double getLongitude() {
-        return longitude;
+    public String getMainDish() {
+        return mainDish;
     }
 
-    public void setLongitude(Double longitude) {
-        this.longitude = longitude;
+    public void setMainDish(String mainDish) {
+        this.mainDish = mainDish;
     }
 
 //    public Point getLocation() {
@@ -175,4 +166,5 @@ public class TbVwNature {
 //    public void setLocation(Point location) {
 //        this.location = location;
 //    }
+
 }
