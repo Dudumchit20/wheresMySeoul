@@ -1,0 +1,53 @@
+.placeTitle{
+    background: #DA4661;
+    font-size: larger;
+    white-space: "nowrap" 
+}
+h3{
+    color:#DA657B;
+    font-size: 20px;
+}
+.subtitle{
+    color : #919191;
+    font-size: 18px ;
+}
+p{
+    color : #5D5D5D;
+    font-size: 16px ;
+}
+.thumbnail {
+    max-width: 100%; /* 이미지 너비가 부모 요소에 맞게 조정됩니다. */
+    height: 200px; /* 이미지 높이를 부모 요소의 높이와 동일하게 설정합니다. */
+}
+
+.box_map {
+    flex:1;
+   
+}
+.parent-container {
+    display: flex;
+
+}
+
+.box {
+    flex: 0.5;
+    padding: 15px;
+    margin-left: 20px;
+    border-radius: 23px;
+    border-color: #EBEBEB;
+    border-width: 1.5px;
+    border-style: solid;
+}
+
+.h2{
+    color:#5D5D5D;
+    text-align: center;
+}
+/* {
+    background: "red",
+    padding: "2px 5px",
+    fontSize: "larger",
+    color: "black",
+    transform: "translate(0%, -100%)",
+    whiteSpace: "nowrap" // 가로로 글씨가 나오게 설정
+  }} */

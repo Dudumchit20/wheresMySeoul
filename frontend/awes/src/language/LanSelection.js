@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "./FilterButtons.css";
+import "../recommend/FilterButtons.css";
 
 const FilterButtons = () => {
   // 현재 선택된 버튼의 인덱스를 추적하는 상태 변수

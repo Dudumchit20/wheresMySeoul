@@ -1,0 +1,13 @@
+.placeTitle{
+    background: aqua;
+    font-size: larger;
+    white-space: "nowrap" 
+}
+/* {
+    background: "red",
+    padding: "2px 5px",
+    fontSize: "larger",
+    color: "black",
+    transform: "translate(0%, -100%)",
+    whiteSpace: "nowrap" // 가로로 글씨가 나오게 설정
+  }} */
