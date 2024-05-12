@@ -1,9 +1,9 @@
 package awes.controller;
 
-import awes.entity.TbSebcTourStreetKor;
+import awes.entity.*;
 import awes.model.ResultRecommend;
 import awes.model.ResultRecommendTest;
-import awes.service.TbSebcTourStreetKorService;
+import awes.service.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,22 +16,45 @@ import java.util.List;
 public class RecommendController {
 
     private final TbSebcTourStreetKorService tbSebcTourStreetKorService;
+    private final TbVwAttractionsService tbVwAttractionsService;
+    private final TbVwEntertainmentService tbVwEntertainmentService;
+    private final TbVwShoppingService tbVwShoppingService;
+    private final TbVwNatureService tbVwNatureService;
+    private final TbVwRestaurantsService tbVwRestaurantsService;
+    private final TbTourInformationService tbTourInformationService;
+
     List<String> defaultCategory = Arrays.asList("관광거리", "명소", "문화", "쇼핑", "자연", "음식", "외국인");
     boolean numIsOverTen = false;
 
-    public RecommendController(TbSebcTourStreetKorService tbSebcTourStreetKorService) {
+    public RecommendController(TbSebcTourStreetKorService tbSebcTourStreetKorService,
+                               TbVwAttractionsService tbVwAttractionsService,
+                               TbVwEntertainmentService tbVwEntertainmentService,
+                               TbVwShoppingService tbVwShoppingService,
+                               TbVwNatureService tbVwNatureService,
+                               TbVwRestaurantsService tbVwRestaurantsService,
+                               TbTourInformationService tbTourInformationService
+    ) {
         this.tbSebcTourStreetKorService = tbSebcTourStreetKorService;
+        this.tbVwAttractionsService = tbVwAttractionsService;
+        this.tbVwEntertainmentService = tbVwEntertainmentService;
+        this.tbVwShoppingService = tbVwShoppingService;
+        this.tbVwNatureService = tbVwNatureService;
+        this.tbVwRestaurantsService = tbVwRestaurantsService;
+        this.tbTourInformationService = tbTourInformationService;
     }
 
     @GetMapping("/recommend")
     public ResultRecommend resultRecommendList(
-            @RequestParam(value = "address", defaultValue = "중구") String address,
+           // @RequestParam(value = "address", defaultValue = "중구") String address,
             @RequestParam(value="latitude", defaultValue = "0") double latitude,
             @RequestParam(value="longitude", defaultValue = "0") double longitude,
             @RequestParam(value="num", defaultValue = "0") int num,
-            @RequestParam(value="category") List<String> category
+            //@RequestParam(value="category") List<String> category
+            @RequestParam(value = "category", defaultValue = "관광거리,명소,문화,쇼핑,자연,음식,외국인") String categorys
+
     ){
         ResultRecommend resultRecommend = new ResultRecommend();
+        List<String> category = Arrays.asList(categorys.split(","));
 
         if (category == null || category.isEmpty()) {
             category = defaultCategory; // 기본 값 넣기
@@ -59,37 +82,42 @@ public class RecommendController {
                     List<TbSebcTourStreetKor> tbSebcTourStreetKors = tbSebcTourStreetKorService.findNearby(latitude, longitude, num);
                     resultRecommend.setTourStreetKor(tbSebcTourStreetKors);
                     System.out.println(tbSebcTourStreetKors);
-                    // 조회된 결과를 처리하는 코드 작성
                     break;
                 case "명소":
                     // 명소 테이블 조회
-                    //List<TbVwSights> sights = sightsRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbVwAttractions> tbVwAttractions =tbVwAttractionsService.findNearby(latitude, longitude, num);
+                    resultRecommend.setAttractions(tbVwAttractions);
+                    System.out.println(tbVwAttractions);
                     break;
                 case "문화":
                     // 문화 테이블 조회
-                    //List<TbVwCulture> cultures = cultureRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbVwEntertainment> tbVwEntertainments = tbVwEntertainmentService.findNearby(latitude, longitude, num);
+                    resultRecommend.setEntertainment(tbVwEntertainments);
+                    System.out.println(tbVwEntertainments);
                     break;
                 case "쇼핑":
                     // 쇼핑 테이블 조회
-                    //List<TbVwShopping> shoppings = shoppingRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbVwShopping> tbVwShoppings = tbVwShoppingService.findNearby(latitude, longitude, num);
+                    resultRecommend.setShoppings(tbVwShoppings);
+                    System.out.println(tbVwShoppings);
                     break;
                 case "자연":
                     // 자연 테이블 조회
-                    //List<TbVwNature> natures = natureRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbVwNature> tbVwNatures = tbVwNatureService.findNearby(latitude, longitude, num);
+                    resultRecommend.setNature(tbVwNatures);
+                    System.out.println(tbVwNatures);
                     break;
                 case "음식":
                     // 음식 테이블 조회
-                    //List<TbVwFood> foods = foodRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbVwRestaurants> tbVwRestaurants = tbVwRestaurantsService.findNearby(latitude, longitude, num);
+                    resultRecommend.setRestaurants(tbVwRestaurants);
+                    System.out.println(tbVwRestaurants);
                     break;
                 case "외국인":
                     // 외국인 테이블 조회
-                    //List<TbVwForeigners> foreigners = foreignersRepository.findAll();
-                    // 조회된 결과를 처리하는 코드 작성
+                    List<TbTourInformation> tbTourInformations = tbTourInformationService.findNearby(latitude, longitude, num);
+                    resultRecommend.setTourInformations(tbTourInformations);
+                    System.out.println(tbTourInformations);
                     break;
                 default:
                     // 처리할 categoryName이 없는 경우
@@ -99,23 +127,6 @@ public class RecommendController {
             }
 
         }
-
-        // 받아온 위도Y, 경도X
-        /*
-        장소의 갯수 : 4개 선택
-        원하는 분류 : 명소, 문화, 쇼핑
-        >>>
-    명소 : 4개
-문화 : 4개
-쇼핑 : 4개
->>>
-사용자가 코스를 짜게 하자.
-지도 + 목록
-1) 명소 2
-2) 문화 3
-3) 명소 1
-        * */
-
 
         return resultRecommend;
     }

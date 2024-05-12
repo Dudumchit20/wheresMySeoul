@@ -17,8 +17,7 @@ public class TbSebcTourStreetKorService {
 
     @Autowired
     private TbSebcTourStreetKorRepository repository;
-    @Autowired
-    private EntityManager entityManager;
+
 
     public List<TbSebcTourStreetKor> findAll() {
         return repository.findAll();
