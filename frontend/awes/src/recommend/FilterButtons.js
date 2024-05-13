@@ -5,6 +5,7 @@ const FilterButtons = () => {
   // 각 버튼의 선택 상태를 추적하는 useState 훅
   const [selectedFilters, setSelectedFilters] = useState([]);
 
+  
   // 버튼을 클릭할 때 실행되는 함수
   const handleButtonClick = (filter) => {
     // 이미 선택된 필터인지 확인
