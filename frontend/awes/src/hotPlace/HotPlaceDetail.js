@@ -1,6 +1,7 @@
 // HotPlaceDetail.js
 
 import React, { useEffect, useState } from 'react';
+import { GoogleMap, Marker, MarkerF } from '@react-google-maps/api'; // LoadScript 추가
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
@@ -35,7 +36,7 @@ function HotPlaceDetail() {
     const { index } = useParams();
 
     const [placeData, setPlaceData] = useState(null);
-    const SEOUL_OPEN_DATA_AUTH_KEY_ = "515653596b79756a38384a77506645";
+    const SEOUL_OPEN_DATA_AUTH_KEY= "515653596b79756a38384a77506645";
     const navigate = useNavigate();
      // 필터링된 값을 업데이트하는 함수
   const handleSelectedFiltersChange = (filters) => {
@@ -45,9 +46,9 @@ function HotPlaceDetail() {
         // 페이지가 로드될 때 API 호출하여 해당 장소에 대한 데이터를 받아옴
         async function fetchPlaceData() {
             try {
-                const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY_}/json/citydata/1/5/${placeName}`);
+   
+                const response = await fetch(`/seoul-api/${SEOUL_OPEN_DATA_AUTH_KEY}/json/citydata/1/5/${placeName}`);
                 const data = await response.json();
-                
                 // CITYDATA 객체 안에 있는 AREA_NM 속성 가져오기
                 const weather = data.CITYDATA.WEATHER_STTS[0];
                 const traffic = data.CITYDATA.ROAD_TRAFFIC_STTS.AVG_ROAD_DATA;
@@ -150,7 +151,7 @@ function HotPlaceDetail() {
           
           <div className="block">
           <h2>{placeName} 의 교통상황</h2>
-          <div className="title_inf">** 마커를 클릭하면 더 상세한 정보를 얻으실 수 있습니다!</div>
+          <div className="title_inf">** 마커를 클릭하면 더 상세한 정보를 얻을 수 있어요!</div>
               필터 (복수 선택 가능)
               <ReFilterButtons selectedFilters={selectedFilters} setSelectedFilters={handleSelectedFiltersChange} />
                 <Map  placeName = {placeName} inf1={culture} inf2={parking} inf3={subway} inf4={bike} selectedFilters = {selectedFilters}/>
