@@ -50,15 +50,17 @@ public class RecommendController {
             @RequestParam(value="longitude", defaultValue = "0") double longitude,
             @RequestParam(value="num", defaultValue = "0") int num,
             //@RequestParam(value="category") List<String> category
-            @RequestParam(value = "category", defaultValue = "관광거리,명소,문화,쇼핑,자연,음식,외국인") String categorys
+            @RequestParam(value = "category", defaultValue = "관광거리,명소,문화,쇼핑,자연,음식,외국인") String category
 
-    ){
+    ){      System.out.println("Categories: " + category);
+
         ResultRecommend resultRecommend = new ResultRecommend();
-        List<String> category = Arrays.asList(categorys.split(","));
+        List<String> categoryList = Arrays.asList(category.split(","));
+        System.out.println("쉼표 기준 분류: " + categoryList);
 
-        if (category == null || category.isEmpty()) {
-            category = defaultCategory; // 기본 값 넣기
-        }
+//        if (category == null || category.isEmpty()) {
+//            category = defaultCategory; // 기본 값 넣기
+//        }
 
         // num이 10 이상인지 체크해두기
         if(num >=10){
@@ -73,7 +75,7 @@ public class RecommendController {
         }
 
         // category 항목 별 테이블 조회
-        for(String categoryName : category) {
+        for(String categoryName : categoryList) {
             // categoryName에 해당하는 테이블 조회
             // n에 해당하는 대로
             switch (categoryName) {
