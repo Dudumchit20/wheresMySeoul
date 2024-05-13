@@ -63,6 +63,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(nature.getAddress());
                 roc.setPhoneNumber(nature.getPhoneNumber());
                 roc.setWebsite(nature.getWebsite());
+                roc.setLatitude(nature.getLatitude());
+                roc.setLongitude(nature.getLongitude());
                 results.add(roc);
             }
         } else if ("쇼핑".equals(category)) {
@@ -75,6 +77,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(shopping.getAddress());
                 roc.setPhoneNumber(shopping.getPhoneNumber());
                 roc.setWebsite(shopping.getWebsite());
+                roc.setLatitude(shopping.getLatitude());
+                roc.setLongitude(shopping.getLongitude());
                 results.add(roc);
             }
         }else if ("명소".equals(category)) {
@@ -87,6 +91,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(attraction.getAddress());
                 roc.setPhoneNumber(attraction.getPhoneNumber());
                 roc.setWebsite(attraction.getWebsite());
+                roc.setLatitude(attraction.getLatitude());
+                roc.setLongitude(attraction.getLongitude());
                 results.add(roc);
             }
         }else if ("관광거리".equals(category)) {
@@ -99,6 +105,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(sebcTourStreetKor.getLotAddress());
                 roc.setPhoneNumber("번호없음");
                 roc.setWebsite("웹사이트없음");
+                roc.setLatitude(sebcTourStreetKor.getCenterCoordY());
+                roc.setLongitude(sebcTourStreetKor.getCenterCoordX());
                 results.add(roc);
             }
         }else if ("문화".equals(category)) {
@@ -111,6 +119,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(entertainment.getAddress());
                 roc.setPhoneNumber(entertainment.getPhoneNumber());
                 roc.setWebsite(entertainment.getWebsite());
+                roc.setLatitude(entertainment.getLatitude());
+                roc.setLongitude(entertainment.getLongitude());
                 results.add(roc);
             }
         }else if ("음식".equals(category)) {
@@ -123,6 +133,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(restaurant.getAddress());
                 roc.setPhoneNumber(restaurant.getPhoneNumber());
                 roc.setWebsite(restaurant.getWebsite());
+                roc.setLatitude(restaurant.getLatitude());
+                roc.setLongitude(restaurant.getLongitude());
                 results.add(roc);
             }
 
@@ -136,6 +148,8 @@ public class SearchOneCategoryController {
                 roc.setAddress(tourInformation.getLotAddress());
                 roc.setPhoneNumber(tourInformation.getPhoneNumber());
                 roc.setWebsite(tourInformation.getWebsiteUrl());
+                roc.setLatitude(tourInformation.getLatitude());
+                roc.setLongitude(tourInformation.getLongitude());
                 results.add(roc);
             }
         }
