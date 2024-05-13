@@ -44,7 +44,7 @@
   .result_row{
     cursor: pointer;
     padding: 10px;
-    border-bottom: 0.5px solid #91919197;
+    /* border-bottom: 0.5px solid #91919197; */
 
     color: #919191;
     /* background-color: aquamarine; */

@@ -1,5 +1,3 @@
-
-
 // Map.js
 import React, { useEffect, useState } from 'react';
 import { GoogleMap, Marker, MarkerF } from '@react-google-maps/api'; // LoadScript 추가
