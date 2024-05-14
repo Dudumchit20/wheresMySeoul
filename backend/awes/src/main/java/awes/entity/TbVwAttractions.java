@@ -1,8 +1,7 @@
 package awes.entity;
 
 import jakarta.persistence.*;
-import org.locationtech.jts.geom.Point;
-import java.sql.Date;
+
 
 @Entity
 @Table(name = "tb_vw_attractions")
