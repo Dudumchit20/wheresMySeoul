@@ -4,9 +4,10 @@ import { LoadScript } from '@react-google-maps/api';
 
 import Home from './Home';
 import HotPlaceDetail from './hotPlace/HotPlaceDetail';
-
+import RecommendDetail from './recommend/RecommendDetail'
 function App() {
   return (
+    
     <LoadScript googleMapsApiKey="AIzaSyCoBqm6ZJlc2QRPAEZ8Op36nAklnfj5DsE">
 
     <Router>
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/hotplaces/:placeName/:index" element={<HotPlaceDetail />} />
+        <Route path="/recommend/:currentLocation/:placeNum/:filters" element={< RecommendDetail/>} />
       </Routes>
 
     </Router>

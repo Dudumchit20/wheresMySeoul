@@ -23,7 +23,9 @@ function HotPlaces() {
     // 각 장소에 대한 비동기적인 혼잡도 데이터를 가져옵니다.
     const fetchPromises = AREA_CODES.map(async (code) => {
       try {
-        const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY_}/json/citydata_ppltn/1/5/${code}`);
+        // const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY_}/json/citydata_ppltn/1/5/${code}`);
+        const response = await fetch(`/seoul-api/${SEOUL_OPEN_DATA_AUTH_KEY_}/json/citydata_ppltn/1/5/${code}`);
+
         const data = await response.json();
         // console.log(data)
         const personData = data['SeoulRtd.citydata_ppltn']['0']; // 안전하게 인덱스에 접근

@@ -152,7 +152,7 @@ function findClosestTouristSpot(latitude, longitude) {
   return closestSpot;
 }
 
-function LocationSearchField({setWeatherData}) {
+function LocationSearchField({setWeatherData, setCurrentLocation}) {
   const inputStyle = {
     color: 'black',
     border: '0px solid gray',
@@ -172,9 +172,9 @@ function LocationSearchField({setWeatherData}) {
   };
 
   const [inputValue, setInputValue] = useState('');
-  const [currentLocation, setCurrentLocation] = useState('');
   const [closestTouristSpot, setClosestTouristSpot] = useState('');
   const [searchResults, setSearchResults] = useState([]);
+  const [currentAdress, setCurrentAdress] = useState([]);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -185,7 +185,10 @@ function LocationSearchField({setWeatherData}) {
             .then(({ results }) => {
               if (results && results.length > 0) {
                 const address = results[0].formatted_address;
-                setCurrentLocation(address);
+                // 주소에서 구 정보 추출
+                const splittedAddress = address.split(' ');
+                const gu = splittedAddress.find(part => part.endsWith('구'));
+                setCurrentLocation({ gu, latitude, longitude }); // 구 정보와 위도, 경도 저장
                 setInputValue(address);
               } else {
                 setInputValue('Unable to find address.');
@@ -201,25 +204,26 @@ function LocationSearchField({setWeatherData}) {
         },
         (error) => {
           console.error('Geolocation error:', error);
-          setInputValue('Location access denied.');
+          setInputValue('원하는 위치를 검색해주세요. 위치 허용 시 현재 위치를 중심으로 검색할 수 있습니다.');
         }
       );
     } else {
       setInputValue('Geolocation not supported.');
     }
   }, []);
+  
 
   const fetchWeatherData = async (spotName) => {
     try {
-      // console.log("log---[관광특구 확인]", spotName);
-      const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY}/json/citydata/131/168/${spotName}`);
+      const response = await fetch(`/seoul-api/${SEOUL_OPEN_DATA_AUTH_KEY}/json/citydata/131/168/${spotName}`);
+      // const response = await fetch(`http://openapi.seoul.go.kr:8088/${SEOUL_OPEN_DATA_AUTH_KEY}/json/citydata/131/168/${spotName}`);
+
       const data = await response.json();
       // console.log("log---[관광특구 날씨 받기 확인]", data);
   
       // 데이터 구조에 맞게 날씨 상태 추출
       const weatherStats = data.CITYDATA.WEATHER_STTS[0];
-
-      // PRECIPITATION : 강수량
+      // PRECIPITATION : 강수
       const precipitation = weatherStats.PRECIPITATION
       // TEMP : 기온
       const temperature = weatherStats.TEMP;
@@ -257,9 +261,11 @@ function LocationSearchField({setWeatherData}) {
         if (results && results.length > 0) {
           setSearchResults(results);
           const { location } = results[0].geometry;
+
           const closestSpot = findClosestTouristSpot(location.lat, location.lng);
           setClosestTouristSpot(closestSpot.name);
           fetchWeatherData(closestSpot.name);
+          
         } else {
           setSearchResults([{ formatted_address: '주소를 찾지 못했습니다.' }]);
         }
@@ -287,8 +293,29 @@ function LocationSearchField({setWeatherData}) {
   };
 
   const handleSuggestionClick = (address) => {
+    setCurrentAdress(address)
+
+
+    fromAddress(address)
+      .then(({ results }) => {
+        if (results && results.length > 0) {
+          setSearchResults(results);
+          const { location } = results[0].geometry;
+          // 주소에서 구 정보 추출
+          const splittedAddress = address.split(' ');
+          const gu = splittedAddress.find(part => part.endsWith('구'));
+          setCurrentLocation({ gu:gu, lat : location.lat, lng: location.lng });
+
+          console.log(gu, location.lat, location.lng);
+        }
+      })
+      .catch((error) => {
+        console.error('Geocoding error:', error);
+        setSearchResults([{ formatted_address: '주소를 찾지 못했습니다.' }]);
+      });
+  
     setInputValue(address);
-    setSearchResults([]);
+    setSearchResults([]); // 검색 결과 초기화
   };
 
   return (
