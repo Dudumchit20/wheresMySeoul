@@ -1,7 +1,7 @@
 package awes.entity;
 
 import jakarta.persistence.*;
-import org.locationtech.jts.geom.Point;
+//import org.locationtech.jts.geom.Point;
 @Entity
 @Table(name = "tb_vw_shopping")
 public class TbVwShopping {

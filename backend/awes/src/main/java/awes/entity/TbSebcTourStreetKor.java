@@ -4,7 +4,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import org.locationtech.jts.geom.Point;
+
 @Entity
 @Table(name = "tb_sebc_tour_street_kor")
 public class TbSebcTourStreetKor {
