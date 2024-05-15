@@ -16,7 +16,7 @@ public interface TbTourInformationRepository extends JpaRepository<TbTourInforma
             "latitude, longitude, data_date, provider_code, provider_name, operation_time, " +
             "ST_Distance_Sphere(location, ST_SRID(Point(:longitude, :latitude), 4326)) AS distance " +
             "FROM tb_tour_information " +
-            "WHERE language = 'ko' " +
+            //"WHERE language = 'ko' " +
             "ORDER BY distance " +
             "LIMIT :num",
             nativeQuery = true)
@@ -31,7 +31,7 @@ public interface TbTourInformationRepository extends JpaRepository<TbTourInforma
             "latitude, longitude, data_date, provider_code, provider_name, operation_time, " +
             "ST_Distance_Sphere(location, ST_SRID(Point(:longitude, :latitude), 4326)) AS distance " +
             "FROM tb_tour_information " +
-            "WHERE language = 'ko' " +
+            //"WHERE language = 'ko' " +
             "ORDER BY distance",
             nativeQuery = true)
     List<TbTourInformation> findAllNearby(@Param("latitude") double latitude,
