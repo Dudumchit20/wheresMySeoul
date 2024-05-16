@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @RestController
 public class RecommendController {
 
@@ -52,11 +53,21 @@ public class RecommendController {
             //@RequestParam(value="category") List<String> category
             @RequestParam(value = "category", defaultValue = "관광거리,명소,문화,쇼핑,자연,음식,외국인") String category
 
-    ){      System.out.println("Categories: " + category);
+    ){
 
+        System.out.println("=========================");
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println( "Recommend API Current time is: " + now.format(formatter));
+        System.out.println( "입력된 latitude: "+ latitude);
+        System.out.println( "입력된 longitude: "+ longitude);
+        System.out.println("입력된 num: " + num);
+        System.out.println("입력된 category들: " + category);
+        System.out.println("=========================");
+        
         ResultRecommend resultRecommend = new ResultRecommend();
         List<String> categoryList = Arrays.asList(category.split(","));
-        System.out.println("쉼표 기준 분류: " + categoryList);
+        //System.out.println("쉼표 기준 분류: " + categoryList);
 
 //        if (category == null || category.isEmpty()) {
 //            category = defaultCategory; // 기본 값 넣기
