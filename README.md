@@ -1,6 +1,12 @@
 # 어서울, AI 기반 관광 추천 서비스
-
-![어서울_대표이미지](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/2116675f-8478-458a-9adf-6eef60fe61e5)
+- 서비스명 : 어서울, 어서오세요 서울로!
+- 설명 : 날씨, 관광지, 핫플 그리고 관광코스 추천까지! 현재 위치 검색 후 관광에 관련된 다양한 정보를 알려주는 관광 통합 서비스
+- 인원 : 2명 (정유진, 박근영)
+- 기간 : 24.05.09 - 24.05.15
+- 프론트엔드 : Node.js, JavaScript, Html, css
+- 백엔드 : MySQL, Spring
+  
+![어서울_대표이미지](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/2116675f-8478-458a-9adf-6eef60fe61e5){: width="50%"}
 ![슬라이드1](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/d9138a00-9db0-4773-bd25-14295661e929)
 ![슬라이드2](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/03933f5e-c8d1-40c6-96cc-7c300c5422b6)
 ![슬라이드3](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/f71d6a99-ea17-49b9-97fb-a339f25d4842)
