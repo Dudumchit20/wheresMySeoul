@@ -4,7 +4,7 @@
 - 인원 : 2명 (정유진, 박근영)
 - 기간 : 24.05.09 - 24.05.15 (1주일)
 - 프론트엔드 : Node.js, JavaScript, Html, css
-- 백엔드 : MySQL, Spring
+- 백엔드 : MySQL, Spring, java, AWS EC2 + RDS
   
 ![어서울_대표이미지](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/2116675f-8478-458a-9adf-6eef60fe61e5){: width="50%"}
 ![슬라이드1](https://github.com/Dudumchit20/wheresMySeoul/assets/114843604/d9138a00-9db0-4773-bd25-14295661e929)
