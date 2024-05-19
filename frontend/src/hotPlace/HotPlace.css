@@ -1,0 +1,50 @@
+
+  .hot-places-list {
+    max-height: 400px; /* 최대 높이 설정 */
+    overflow-y: auto; /* 세로 방향으로 스크롤 가능하도록 설정 */
+    list-style-type: none;
+    padding:0;
+    
+  }
+  .hot-places-list-recommend {
+    max-height: 400px; /* 최대 높이 설정 */ 
+    width: 100%; /* 가로 길이를 컨테이너에 꽉 차게 조정 */
+
+    overflow-y: auto; /* 세로 방향으로 스크롤 가능하도록 설정 */
+    list-style-type: none;
+    padding:0;
+    
+  }
+  
+  .hot-place-item {
+    width: 100%; /* 가로 길이를 컨테이너에 꽉 차게 조정 */
+
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border-color: #d7d7d7;
+    border-style:solid;
+    border-width: 1px;
+
+  }
+  
+  .hot-place-item h3 {
+    margin-top: 3px;
+    color: #e6899a;
+  }
+  
+  .hot-place-item p {
+    margin: 5px 0;
+  }
+  .top_title{
+    color: #313131;
+    font-size: 14px;
+    margin: 3px;
+    margin-top: 20px;
+  }
+  .top_content{
+    color: #949494;
+    font-size: 12px;
+    margin: 3px;
+    margin-bottom: 10px;
+  }

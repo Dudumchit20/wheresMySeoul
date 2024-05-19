@@ -1,0 +1,58 @@
+.block_detail{
+    flex: 1;
+    background-color: #fff;
+    border-radius: 23px;
+    text-align: left;
+    margin-right: 15px;
+    padding: 20px 30px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  
+}
+.block3 {
+  flex: 1 1 23%; /* Allows blocks to grow to fill the row */
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  padding: 20px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 500px; /* Fixed height for each block */
+  margin-bottom: 15px; /* Maintains bottom margin for wrapping */
+}
+
+
+.block_map{
+  flex: 1; /* 각 요소들이 동일한 공간을 차지하도록 설정 */
+  background-color: #fff;
+  border-radius: 23px;
+  text-align: left;
+  padding: 20px 30px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  margin-bottom: 15px;
+}
+
+  .container{
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 세로 중앙 정렬 */
+  }
+
+  .container-row{
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+    justify-content: space-between; /* This will distribute space evenly between and around items */
+    align-items: flex-start; /* Aligns items to the top of the container */
+    gap:  0 15px; /* Replaces margin-right and handles spacing in a more flexible way */
+  }
+
+
+  .detail{
+    color:darkgrey;
+    margin-bottom: 10px;
+  }

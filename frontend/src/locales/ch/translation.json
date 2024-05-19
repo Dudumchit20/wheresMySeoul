@@ -1,0 +1,75 @@
+{
+  "header": {
+    "subtitle": "探索首尔的隐藏风景，AI驱动的旅游推荐服务",
+    "explain": "从天气预报、旅游景点、热门地点到旅游线路推荐！在查询您的当前位置后，体验与旅游相关的各种信息。"
+  },
+  "content": {
+    "title1": "当前位置",
+    "subtitle1": "我们根据您的当前位置或所希望的位置提供服务。",
+
+    "title2": "今天的旅游天气如何？",
+
+    "title3": "首尔热门景点Top5",
+    "subtitle3": "点击热门地点可以查看更多详细的旅游信息！",
+
+    "title4": "探索周边旅游景点",
+    "subtitle4": "可选择多个过滤器 - 点击标记可以查看更多详情！",
+
+    "title5": "获取旅游路线推荐",
+    "subtitle5": "选择一条路线，我们将为您推荐位置周边的旅游路线！",
+    "sel1": "请选择名额",
+    "sel2": "请选择所需类别（可多选）",
+    "recommendBtn": "获得精选"
+  },
+  "header2": {
+    "home": "返回首页"
+  },
+  "content2": {
+    "title1": "天气",
+    "subtitle1_weather": "降水信息",
+    "subtitle2_weather": "紫外线信息",
+    "subtitle3_weather": "空气质量信息",
+
+    "title2": "人口比例",
+    "subtitle1_people": "地区拥挤度",
+    "subtitle2_people": "拥挤度相关信息",
+    "subtitle3_people": "居民人口比例",
+    "subtitle4_people": "非居民（游客等）人口比例",
+
+    "title3": "道路状况",
+    "subtitle1_road": "道路拥挤度",
+    "subtitle2_road": "道路相关信息",
+    "subtitle3_road": "道路平均速度",
+
+
+    "title4": "交通状况",
+    "subtitle1_traffic": "点击标记可以获得更详细的信息！",
+    "subtitle2_traffic": "筛选器（可多选）"
+  
+  
+  },
+  "header3": {
+    "title": "旅游路线推荐"
+  },
+
+  "content3": {
+      "title1": "我们推荐的旅游路线！",
+      "subtitle1": "点击标记以查看更详细的信息。"
+  },
+
+  "kind": {
+      "k1": "旅游景点",
+      "k2": "地标",
+      "k3": "文化",
+      "k4": "购物",
+      "k5": "自然",
+      "k6": "美食",
+      "k7": "外国人",
+      "k8": "文化",
+      "k9": "停车场",
+      "k10": "地铁",
+      "k11": "自行车"
+
+  }
+
+}

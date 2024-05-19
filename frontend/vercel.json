@@ -1,0 +1,17 @@
+{
+    "rewrites": [
+      {
+        "source": "/seoul-api/:path*",
+        "destination": "http://openapi.seoul.go.kr:8088/:path*"
+      },
+      {
+        "source": "/maps-api/:path*",
+        "destination": "http://maps.google.com/:path*"
+      },
+      {
+        "source": "/awes-api/:path*",
+        "destination": "http://3.39.223.21:8080/:path*"
+      }
+    ]
+  }
+ 
