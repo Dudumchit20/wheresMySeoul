@@ -38,10 +38,11 @@ dependencies {
 	runtimeOnly 'com.mysql:mysql-connector-j'
 
 	// Point 타입 쓰려고
-	implementation 'org.locationtech.jts:jts-core:1.16.1'
+	///implementation 'org.locationtech.jts:jts-core:1.16.1'
 	//implementation 'org.hibernate:hibernate-spatial:5.4.20.Final'
 	//implementation "org.hibernate:hibernate-core:${hibernateVersion}"
 	//implementation "org.hibernate:hibernate-spatial:${hibernateVersion}"
+	///implementation 'org.hibernate.engine.jdbc.env.spi.JdbcEnvironment'
 
 }
 

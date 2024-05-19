@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 @RestController
 public class SearchOneCategoryController {
     @Autowired
@@ -48,8 +49,15 @@ public class SearchOneCategoryController {
             (@RequestParam(value="address", defaultValue = "중구") String address,
              @RequestParam(value = "category", defaultValue = "쇼핑") String category) {
         // 여기에서 파라미터 값 출력
-        System.out.println("Address: " + address);
-        System.out.println("Category: " + category);
+        //System.out.println("Address: " + address);
+        //System.out.println("Category: " + category);
+        System.out.println("=========================");
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        System.out.println( "SearchOneCategory API Current time is: " + now.format(formatter));
+        System.out.println( "입력된 address: "+ address);
+        System.out.println("입력된 category: " + category);
+        System.out.println("=========================");
 
         List<ResultOneCategory> results = new ArrayList<>();
         //List<TourStreetKorDto> resultsTour = new ArrayList<>();
